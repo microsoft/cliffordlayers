@@ -2,6 +2,7 @@ site_name: CliffordLayers
 site_description: Documentation for CliffordLayers
 repo_name: microsoft/cliffordlayers
 edit_uri: edit/main/docs
+repo_url: https://github.com/microsoft/cliffordlayers
 
 markdown_extensions:
   - attr_list
