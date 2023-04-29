@@ -38,7 +38,8 @@ class CliffordSpectralConv2d(nn.Module):
     ) -> None:
         super().__init__()
         sig = CliffordSignature(g)
-        self.g = sig.g
+        # To allow move to same device as module.
+        self.register_buffer("g", sig.g)
         self.dim = sig.dim
         if self.dim != 2:
             raise ValueError("g must be a 2D Clifford algebra")

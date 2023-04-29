@@ -38,7 +38,8 @@ class _CliffordConvNd(nn.Module):
     ) -> None:
         super().__init__()
         sig = CliffordSignature(g)
-        self.g = sig.g
+        # register as buffer as we want the tensor to be moved to the same device as the module
+        self.register_buffer('g', sig.g)
         self.dim = sig.dim
         self.n_blades = sig.n_blades
         if rotation:
@@ -122,7 +123,7 @@ class _CliffordConvNd(nn.Module):
             bound = 1 / math.sqrt(fan_in)
             nn.init.uniform_(self.bias, -bound, bound)
 
-    def forward(self, x: torch.Tensor, conv_fn: callable) -> torch.Tensor:
+    def forward(self, x: torch.Tensor, conv_fn: callable) -> torch.Tensor:      
         if self.bias is not None:
             b = self.bias.view(-1)
         else:
