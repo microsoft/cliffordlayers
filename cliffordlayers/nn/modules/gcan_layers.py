@@ -2,7 +2,7 @@ import math
 import torch
 from torch import nn
 from torch.nn.modules.utils import _pair
-from cliffordlayers.nn.modules.cliffordg3conv import clifford_g3convnd
+from cliffordlayers.nn.functional.cliffordg3conv import clifford_g3convnd
 
 
 def get_clifford_left_kernel(M, w, flatten=True):
@@ -41,8 +41,8 @@ class PGAConjugateLinear(nn.Module):
         self._action = nn.Parameter(
             torch.empty(out_features, in_features, self.n_action_blades)
         )
-        self._weight = nn.Parameter(torch.empty(out_features, in_features))
-        self._embed_e0 = nn.Parameter(torch.zeros(in_features, 1))
+        self.weight = nn.Parameter(torch.empty(out_features, in_features))
+        self.embed_e0 = nn.Parameter(torch.zeros(in_features, 1))
 
         self.inverse = algebra.reverse
 
@@ -64,22 +64,19 @@ class PGAConjugateLinear(nn.Module):
         norm = norm[..., :1]
         self._action.data = self._action.data / norm
 
-        torch.nn.init.kaiming_uniform_(self._weight, a=math.sqrt(5))
+        torch.nn.init.kaiming_uniform_(self.weight, a=math.sqrt(5))
 
     @property
     def action(self):
         return self.algebra.embed(self._action, self.action_blades)
 
-    @property
-    def weight(self):
-        return self._weight
 
     def forward(self, input):
         M = self.algebra.cayley
         k = self.action
         k_ = self.inverse(k)
         x = self.algebra.embed(input, self.input_blades)
-        x[..., 14:15] = self._embed_e0
+        x[..., 14:15] = self.embed_e0
         # x[..., 14:15] = 1
 
         k_l = get_clifford_left_kernel(M, k, flatten=False)

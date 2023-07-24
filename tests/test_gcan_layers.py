@@ -1,12 +1,11 @@
 import torch
-from cliffordlayers.models.gcan_layers import (
+from cliffordlayers.nn.modules.gcan_layers import (
+    CliffordG3ConvTranspose2d,
+    CliffordG3GroupNorm,
+    CliffordG3SiLU,
+    CliffordG3Conv2d,
     PGAConjugateLinear,
     MultiVectorAct,
-    CliffordG3Conv2d,
-    CliffordG3SiLU,
-    CliffordG3GroupNorm,
-    CliffordG3ConvTranspose2d
-
 )
 from cliffordlayers.cliffordalgebra import CliffordAlgebra
 
@@ -15,12 +14,14 @@ def test_g3convtranspose2d():
     g3convtranspose2d = CliffordG3ConvTranspose2d(8, 8)
     x = torch.randn(4, 8, 32, 32, 3)
     y = g3convtranspose2d(x)
+    assert y.shape == (4, 8, 32, 32, 3)
 
 def test_g3groupnorm():
 
     g3groupnorm = CliffordG3GroupNorm(8, 8, 3)
     x = torch.randn(4, 8, 3)
     y = g3groupnorm(x)
+    assert y.shape == (4, 8, 3)
 
 
 
@@ -28,6 +29,7 @@ def test_g3vector_act():
     g3vectorlinear = CliffordG3SiLU(8)
     x = torch.randn(4, 8, 32, 32, 3)
     y = g3vectorlinear(x)
+    assert y.shape == (4, 8, 32, 32, 3)
 
 
 def test_g3conv2d():
@@ -45,6 +47,8 @@ def test_g3conv2d():
     x = torch.randn(4, 3, 3, 3, 3)
     output = conv(x)
 
+    assert output.shape == (4, 4, 3, 3, 3)
+
 
 def test_pga_conjugate_linear():
     in_features = 8
@@ -60,6 +64,7 @@ def test_pga_conjugate_linear():
 
     vector = torch.randn(4, in_features, 3)
     output = linear(vector)
+    assert output.shape == (4, out_features, 3)
 
 
 def test_multivectoract():
@@ -67,6 +72,7 @@ def test_multivectoract():
     input = torch.randn(4, 3, 3)
     act = MultiVectorAct(channels=3, algebra=algebra, input_blades=(1, 2, 3))
     output = act(input)
+    assert output.shape == (4, 3, 3)
 
 
 if __name__ == "__main__":

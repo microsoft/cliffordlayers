@@ -1,5 +1,5 @@
 import torch
-from cliffordlayers.algebra import CliffordAlgebra
+from cliffordlayers.cliffordalgebra import CliffordAlgebra
 
 
 def test_geometric_product_vs_complex_multiplication():
