@@ -1,9 +1,9 @@
 # Modules
 
-We provide linear Clifford layers; 1D, 2D, 3D Clifford convolution layers, 
-and 2D, 3D Clifford Fourier transform layers. 
+We provide linear Clifford layers; 1D, 2D, 3D Clifford convolution layers,
+and 2D, 3D Clifford Fourier transform layers.
 Additionally, Clifford normalization schemes are provided.
- 
+
 All these modules are available for different algebras.
 
 ::: cliffordlayers.nn.modules.cliffordlinear
