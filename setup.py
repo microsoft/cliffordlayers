@@ -25,7 +25,7 @@ setup(
     long_description_content_type="text/markdown",
     license="MIT",
     author="Jayesh K. Gupta, Johannes Brandstetter, David Ruhe, and contributors",
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     project_urls={
         "Documentation": "https://microsoft.github.io/cliffordlayers",
         "Source code": "https://github.com/microsoft/cliffordlayers",

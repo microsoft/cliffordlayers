@@ -1,3 +1,4 @@
+from typing import Tuple
 import torch
 
 from .basisbladeorder import ShortLexBasisBladeOrder, construct_gmt
@@ -46,7 +47,7 @@ class CliffordAlgebra:
         signs = torch.pow(-1, torch.floor(grades * (grades - 1) / 2))
         return signs * mv.clone()
 
-    def embed(self, tensor: torch.Tensor, tensor_index: tuple[int]) -> torch.Tensor:
+    def embed(self, tensor: torch.Tensor, tensor_index: Tuple[int]) -> torch.Tensor:
         """
         Embeds the input tensor into a multivector.
 
@@ -72,7 +73,7 @@ class CliffordAlgebra:
         mv = torch.scatter(mv, -1, tensor_index, tensor)
         return mv
 
-    def get(self, mv: torch.Tensor, blade_index: tuple[int]) -> torch.Tensor:
+    def get(self, mv: torch.Tensor, blade_index: Tuple[int]) -> torch.Tensor:
         """
         Extracts the components of a multivector corresponding to the specified blade indices.
 
