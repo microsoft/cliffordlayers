@@ -16,13 +16,12 @@ def test_g3convtranspose2d():
     y = g3convtranspose2d(x)
     assert y.shape == (4, 8, 32, 32, 3)
 
-def test_g3groupnorm():
 
+def test_g3groupnorm():
     g3groupnorm = CliffordG3GroupNorm(8, 8, 3)
     x = torch.randn(4, 8, 3)
     y = g3groupnorm(x)
     assert y.shape == (4, 8, 3)
-
 
 
 def test_g3vector_act():

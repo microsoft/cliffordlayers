@@ -8,11 +8,11 @@
 import torch
 import torch.nn.functional as F
 from typing import Union
-from cliffordlayers.nn.modules.cliffordconv import(
+from cliffordlayers.nn.modules.cliffordconv import (
     CliffordConv2d,
     CliffordConv3d,
 )
-from cliffordlayers.models.custom_kernels import(
+from cliffordlayers.models.custom_kernels import (
     get_2d_clifford_encoding_kernel,
     get_2d_clifford_decoding_kernel,
     get_2d_clifford_rotation_encoding_kernel,
@@ -23,9 +23,8 @@ from cliffordlayers.models.custom_kernels import(
 
 
 class CliffordConv2dEncoder(CliffordConv2d):
-    """2d Clifford convolution encoder which inherits from CliffordConv2d.
+    """2d Clifford convolution encoder which inherits from CliffordConv2d."""
 
-    """
     def __init__(
         self,
         g: Union[tuple, list, torch.Tensor],
@@ -64,9 +63,8 @@ class CliffordConv2dEncoder(CliffordConv2d):
 
 
 class CliffordConv2dDecoder(CliffordConv2d):
-    """2d Clifford convolution decoder which inherits from CliffordConv2d.
+    """2d Clifford convolution decoder which inherits from CliffordConv2d."""
 
-    """
     def __init__(
         self,
         g: Union[tuple, list, torch.Tensor],
@@ -102,14 +100,13 @@ class CliffordConv2dDecoder(CliffordConv2d):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         if self.bias is True:
-            raise ValueError(f"Bias needs to be set to False for 2d Clifford decoding layers.")
+            raise ValueError("Bias needs to be set to False for 2d Clifford decoding layers.")
         return super(CliffordConv2d, self).forward(x, F.conv2d)
 
 
 class CliffordConv3dEncoder(CliffordConv3d):
-    """3d Clifford convolution encoder which inherits from CliffordConv3d.
+    """3d Clifford convolution encoder which inherits from CliffordConv3d."""
 
-    """
     def __init__(
         self,
         g: Union[tuple, list, torch.Tensor],
@@ -143,9 +140,8 @@ class CliffordConv3dEncoder(CliffordConv3d):
 
 
 class CliffordConv3dDecoder(CliffordConv3d):
-    """3d Clifford convolution decoder which inherits from CliffordConv3d.
+    """3d Clifford convolution decoder which inherits from CliffordConv3d."""
 
-    """
     def __init__(
         self,
         g: Union[tuple, list, torch.Tensor],
@@ -176,6 +172,5 @@ class CliffordConv3dDecoder(CliffordConv3d):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         if self.bias is True:
-            raise ValueError(f"Bias needs to be set to False for 3d Clifford decoding layers.")
+            raise ValueError("Bias needs to be set to False for 3d Clifford decoding layers.")
         return super(CliffordConv3d, self).forward(x, F.conv3d)
-

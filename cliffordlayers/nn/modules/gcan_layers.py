@@ -7,7 +7,7 @@ from cliffordlayers.nn.functional.cliffordg3conv import clifford_g3convnd
 
 def get_clifford_left_kernel(M, w, flatten=True):
     o, i, c = w.size()
-    k = torch.einsum(f"ijk, pqi->jpkq", M, w)
+    k = torch.einsum("ijk, pqi->jpkq", M, w)
     if flatten:
         k = k.reshape(o * c, i * c)
     return k
@@ -15,7 +15,7 @@ def get_clifford_left_kernel(M, w, flatten=True):
 
 def get_clifford_right_kernel(M, w, flatten=True):
     o, i, c = w.size()
-    k = torch.einsum(f"ijk, pqk->jpiq", M, w)
+    k = torch.einsum("ijk, pqk->jpiq", M, w)
     if flatten:
         k = k.reshape(o * c, i * c)
     return k
@@ -38,9 +38,7 @@ class PGAConjugateLinear(nn.Module):
         self.algebra = algebra
         self.action_blades = action_blades
         self.n_action_blades = len(action_blades)
-        self._action = nn.Parameter(
-            torch.empty(out_features, in_features, self.n_action_blades)
-        )
+        self._action = nn.Parameter(torch.empty(out_features, in_features, self.n_action_blades))
         self.weight = nn.Parameter(torch.empty(out_features, in_features))
         self.embed_e0 = nn.Parameter(torch.zeros(in_features, 1))
 
@@ -57,9 +55,7 @@ class PGAConjugateLinear(nn.Module):
         torch.nn.init.zeros_(self._action[..., 1:4])
         torch.nn.init.zeros_(self._action[..., 7])
 
-        norm = self.algebra.norm(
-            self.algebra.embed(self._action.data, self.action_blades)
-        )
+        norm = self.algebra.norm(self.algebra.embed(self._action.data, self.action_blades))
         assert torch.allclose(norm[..., 1:], torch.tensor(0.0), atol=1e-3)
         norm = norm[..., :1]
         self._action.data = self._action.data / norm
@@ -69,7 +65,6 @@ class PGAConjugateLinear(nn.Module):
     @property
     def action(self):
         return self.algebra.embed(self._action, self.action_blades)
-
 
     def forward(self, input):
         M = self.algebra.cayley
@@ -90,9 +85,7 @@ class PGAConjugateLinear(nn.Module):
 
 
 class MultiVectorAct(nn.Module):
-    def __init__(
-        self, channels, algebra, input_blades, kernel_blades=None, agg="linear"
-    ):
+    def __init__(self, channels, algebra, input_blades, kernel_blades=None, agg="linear"):
         super().__init__()
         self.algebra = algebra
         self.input_blades = tuple(input_blades)
@@ -102,9 +95,7 @@ class MultiVectorAct(nn.Module):
             self.kernel_blades = self.input_blades
 
         if agg == "linear":
-            self.conv = nn.Conv1d(
-                channels, channels, kernel_size=len(self.kernel_blades), groups=channels
-            )
+            self.conv = nn.Conv1d(channels, channels, kernel_size=len(self.kernel_blades), groups=channels)
         self.agg = agg
 
     def forward(self, input):
@@ -149,33 +140,19 @@ class _CliffordG3ConvNd(nn.Module):
         self.groups = groups
         if transposed:
             self.weights = nn.ParameterList(
-                [
-                    nn.Parameter(
-                        torch.empty(in_channels, out_channels // groups, *kernel_size)
-                    )
-                    for _ in range(4)
-                ]
+                [nn.Parameter(torch.empty(in_channels, out_channels // groups, *kernel_size)) for _ in range(4)]
             )
         else:
             self.weights = nn.ParameterList(
-                [
-                    nn.Parameter(
-                        torch.empty(out_channels, in_channels // groups, *kernel_size)
-                    )
-                    for _ in range(4)
-                ]
+                [nn.Parameter(torch.empty(out_channels, in_channels // groups, *kernel_size)) for _ in range(4)]
             )
         if bias:
-            self.bias = nn.ParameterList(
-                [nn.Parameter(torch.empty(out_channels)) for _ in range(3)]
-            )
+            self.bias = nn.ParameterList([nn.Parameter(torch.empty(out_channels)) for _ in range(3)])
         else:
             self.register_parameter("bias", None)
 
         self.scale_param = nn.Parameter(torch.Tensor(self.weights[0].shape))
-        self.zero_kernel = nn.Parameter(
-            torch.zeros(self.weights[0].shape), requires_grad=False
-        )
+        self.zero_kernel = nn.Parameter(torch.zeros(self.weights[0].shape), requires_grad=False)
 
         self.reset_parameters()
 
@@ -195,10 +172,7 @@ class _CliffordG3ConvNd(nn.Module):
                     nn.init.uniform_(bias, -bound, bound)
 
     def extra_repr(self):
-        s = (
-            "{in_channels}, {out_channels}, kernel_size={kernel_size}"
-            ", stride={stride}"
-        )
+        s = "{in_channels}, {out_channels}, kernel_size={kernel_size}" ", stride={stride}"
         if self.padding != (0,) * len(self.padding):
             s += ", padding={padding}"
         if self.dilation != (1,) * len(self.dilation):
@@ -341,6 +315,4 @@ class CliffordG3GroupNorm(nn.Module):
 
         x = x.view(len(x), self.num_features, -1, self.num_blades)
 
-        return (x * self.weight[None, :, None, None] + self.bias[None, :, None]).view(
-            N, C, *D, I
-        )
+        return (x * self.weight[None, :, None, None] + self.bias[None, :, None]).view(N, C, *D, I)

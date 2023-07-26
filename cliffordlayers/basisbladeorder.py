@@ -10,9 +10,7 @@ import torch
 def _powerset(iterable):
     "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
     s = list(iterable)
-    return itertools.chain.from_iterable(
-        itertools.combinations(s, r) for r in range(len(s) + 1)
-    )
+    return itertools.chain.from_iterable(itertools.combinations(s, r) for r in range(len(s) + 1))
 
 
 class ShortLexBasisBladeOrder:
@@ -115,6 +113,4 @@ def construct_gmt(index_to_bitmap, bitmap_to_index, signature):
 
             mult_table_vals[list_ind] = mul
 
-    return torch.sparse_coo_tensor(
-        indices=coords, values=mult_table_vals, size=(n, n, n)
-    )
+    return torch.sparse_coo_tensor(indices=coords, values=mult_table_vals, size=(n, n, n))

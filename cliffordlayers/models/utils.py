@@ -22,4 +22,3 @@ def partialclass(name, cls, *args, **kwds):
         pass
 
     return new_cls
-

@@ -93,6 +93,4 @@ def clifford_g3convnd(
     else:
         raise NotImplementedError("input must be 3D, 4D or 5D")
 
-    return convfunc(
-        input, kernel, bias, stride, padding=padding, dilation=dilation, groups=groups
-    )
+    return convfunc(input, kernel, bias, stride, padding=padding, dilation=dilation, groups=groups)

@@ -31,7 +31,8 @@ class CliffordBasicBlock2d(nn.Module):
         rotation (bool, optional): Wether to use rotational Clifford convolution. Defaults to False.
         norm (bool, optional): Wether to use Clifford (group) normalization. Defaults to False.
         num_groups (int, optional): Number of groups when using Clifford (group) normalization. Defaults to 1.
-    """    
+    """
+
     expansion: int = 1
 
     def __init__(
@@ -46,7 +47,7 @@ class CliffordBasicBlock2d(nn.Module):
         rotation: bool = False,
         norm: bool = False,
         num_groups: int = 1,
-    ) -> None:   
+    ) -> None:
         super().__init__()
         self.conv1 = CliffordConv2d(
             g,
@@ -97,7 +98,8 @@ class CliffordFourierBasicBlock2d(nn.Module):
         num_groups (int, optional): Number of groups when using Clifford (group) normalization. Defaults to 1.
         modes1 (int, optional): Number of Fourier modes in the first dimension. Defaults to 16.
         modes2 (int, optional): Number of Fourier modes in the second dimension. Defaults to 16.
-    """   
+    """
+
     expansion: int = 1
 
     def __init__(
@@ -114,7 +116,7 @@ class CliffordFourierBasicBlock2d(nn.Module):
         num_groups: int = 1,
         modes1: int = 16,
         modes2: int = 16,
-    ):   
+    ):
         super().__init__()
         self.fourier = CliffordSpectralConv2d(
             g,
@@ -162,7 +164,8 @@ class CliffordNet2d(nn.Module):
         rotation (bool, optional): Wether to use rotational Clifford convolution. Defaults to False.
         norm (bool, optional): Wether to use Clifford (group) normalization. Defaults to False.
         num_groups (int, optional): Number of groups when using Clifford (group) normalization. Defaults to 1.
-    """   
+    """
+
     # For periodic boundary conditions, set padding = 0.
     padding = 9
 
@@ -178,7 +181,7 @@ class CliffordNet2d(nn.Module):
         rotation: False,
         norm: bool = False,
         num_groups: int = 1,
-    ):   
+    ):
         super().__init__()
 
         self.activation = activation

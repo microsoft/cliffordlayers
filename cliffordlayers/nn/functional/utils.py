@@ -68,7 +68,7 @@ def _w_assert(w: Union[tuple, list, torch.Tensor, nn.Parameter, nn.ParameterList
     elif isinstance(w, nn.ParameterList):
         return w
     else:
-        raise ValueError(f"Unknown weight type.")
+        raise ValueError("Unknown weight type.")
 
 
 def batchmul1d(x: torch.Tensor, weights: torch.Tensor) -> torch.Tensor:

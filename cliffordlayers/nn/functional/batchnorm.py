@@ -1,5 +1,5 @@
 #####################################################################################
-# Major ideas of complex batch norm taken from https://github.com/ivannz/cplxmodule 
+# Major ideas of complex batch norm taken from https://github.com/ivannz/cplxmodule
 # MIT License
 #####################################################################################
 from typing import Optional, Union

@@ -18,7 +18,7 @@ class CliffordSignature:
         elif self.dim == 3:
             self.n_blades = 8
         else:
-            raise NotImplementedError(f"Wrong Clifford signature.")
+            raise NotImplementedError("Wrong Clifford signature.")
 
     def _g_tensor(self, g: Union[tuple, list, torch.Tensor]) -> torch.Tensor:
         """Convert Clifford signature to tensor.
@@ -37,8 +37,8 @@ class CliffordSignature:
         elif isinstance(g, torch.Tensor):
             pass
         else:
-            raise ValueError(f"Unknown signature.")
+            raise ValueError("Unknown signature.")
 
         if not torch.any(abs(g) == 1.0):
-            raise ValueError(f"Clifford signature should have at least one element as 1.")
+            raise ValueError("Clifford signature should have at least one element as 1.")
         return g
