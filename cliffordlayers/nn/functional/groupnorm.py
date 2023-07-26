@@ -179,7 +179,6 @@ def clifford_group_norm(
         momentum,
         eps,
     ):
-
         if running_mean is not None and running_cov is not None:
             assert running_mean.shape == (I, int(C / num_groups))
             running_mean_orig = running_mean

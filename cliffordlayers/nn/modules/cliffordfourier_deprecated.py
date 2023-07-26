@@ -171,7 +171,7 @@ class CliffordSpectralConv2d_deprecated(nn.Module):
 
     def forward(self, vector: torch.Tensor, spinor: torch.Tensor) -> torch.Tensor:
         # TODO: : should the inputs and outputs be Multivectors?
-        B = vector.shape[0]
+        vector.shape[0]
         # Compute Fourier coefficients up to factor of e^(- something constant)
         vector_ft = torch.fft.fft2(vector)
         spinor_ft = torch.fft.fft2(spinor)
@@ -243,14 +243,7 @@ class CliffordSpectralConv3d_deprecated(nn.Module):
         modes3 (int): Number of Fourier modes to use in the third dimension.
     """
 
-    def __init__(
-        self, 
-        in_channels: int, 
-        out_channels: int, 
-        modes1: int, 
-        modes2: int, 
-        modes3: int
-        ):
+    def __init__(self, in_channels: int, out_channels: int, modes1: int, modes2: int, modes3: int):
         super().__init__()
         self.in_channels = in_channels
         self.out_channels = out_channels
@@ -348,7 +341,7 @@ class CliffordSpectralConv3d_deprecated(nn.Module):
         bs = input.size(0)
         out = batchmul3d(input.reshape(bs, -1, *input.size()[3:]), kernel)
         output = out.reshape(bs, 8, -1, *out.shape[-3:])
-        
+
         out_ft[:, :, :, : self.modes1, : self.modes2, : self.modes3] = output[
             :, :, :, : self.modes1, : self.modes2, : self.modes3
         ]

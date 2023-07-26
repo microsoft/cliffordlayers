@@ -20,20 +20,21 @@ from cliffordlayers.models.custom_layers import CliffordConv3dDecoder, CliffordC
 class CliffordFourierBasicBlock3d(nn.Module):
     """2D building block for Clifford FNO architectures.
 
-        Args:
-            g (Union[tuple, list, torch.Tensor]): Signature of Clifford algebra.
-            in_channels (int): Number of input channels.
-            out_channels (int): Number of output channels.
-            activation (Callable, optional): Activation function. Defaults to F.gelu.
-            kernel_size (int, optional): Kernel size of Clifford convolution. Defaults to 3.
-            stride (int, optional): Stride of Clifford convolution. Defaults to 1.
-            padding (int, optional): Padding of Clifford convolution. Defaults to 1.
-            norm (bool, optional): Wether to use Clifford (group) normalization. Defaults to False.
-            num_groups (int, optional): Number of groups when using Clifford (group) normalization. Defaults to 1.
-            modes1 (int, optional): Number of Fourier modes in the first dimension. Defaults to 8.
-            modes2 (int, optional): Number of Fourier modes in the second dimension. Defaults to 8.
-            modes3 (int, optional): Number of Fourier modes in the third dimension. Defaults to 8.
-        """    
+    Args:
+        g (Union[tuple, list, torch.Tensor]): Signature of Clifford algebra.
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        activation (Callable, optional): Activation function. Defaults to F.gelu.
+        kernel_size (int, optional): Kernel size of Clifford convolution. Defaults to 3.
+        stride (int, optional): Stride of Clifford convolution. Defaults to 1.
+        padding (int, optional): Padding of Clifford convolution. Defaults to 1.
+        norm (bool, optional): Wether to use Clifford (group) normalization. Defaults to False.
+        num_groups (int, optional): Number of groups when using Clifford (group) normalization. Defaults to 1.
+        modes1 (int, optional): Number of Fourier modes in the first dimension. Defaults to 8.
+        modes2 (int, optional): Number of Fourier modes in the second dimension. Defaults to 8.
+        modes3 (int, optional): Number of Fourier modes in the third dimension. Defaults to 8.
+    """
+
     expansion: int = 1
 
     def __init__(
@@ -50,7 +51,7 @@ class CliffordFourierBasicBlock3d(nn.Module):
         modes1: int = 8,
         modes2: int = 8,
         modes3: int = 8,
-    ):    
+    ):
         super().__init__()
         self.fourier = CliffordSpectralConv3d(
             g,
@@ -94,7 +95,8 @@ class CliffordNet3d(nn.Module):
         activation (Callable, optional): Activation function. Defaults to F.gelu.
         norm (bool, optional): Wether to use Clifford (group) normalization. Defaults to False.
         num_groups (int, optional): Number of groups when using Clifford (group) normalization. Defaults to 1.
-    """     
+    """
+
     # For periodic boundary conditions, set padding = 0.
     padding = 2
 

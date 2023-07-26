@@ -70,7 +70,7 @@ def get_2d_clifford_rotation_kernel(
 
     Args:
         w (Union[tuple, list, torch.Tensor, nn.Parameter, nn.ParameterList]): Weight input of shape `(6, d~input~, d~output~, ...)`.
-                    `w[0]`, `w[1]`, `w[2]`, `w[3]` are the 2D Clifford weight tensors; 
+                    `w[0]`, `w[1]`, `w[2]`, `w[3]` are the 2D Clifford weight tensors;
                     `w[4]` is the scaling tensor; `w[5]` is the zero kernel tensor.
 
         g (torch.Tensor): Signature of Clifford algebra.
@@ -304,7 +304,7 @@ def get_quaternion_rotation_kernel(w: Union[tuple, list, torch.Tensor, nn.Parame
         dim=1,
     )
 
-    k= torch.cat([rot_kernel2, rot_kernel3, rot_kernel4], dim=0)
+    k = torch.cat([rot_kernel2, rot_kernel3, rot_kernel4], dim=0)
     return k
 
 
@@ -320,29 +320,13 @@ def get_octonion_kernel(w: Union[tuple, list, torch.Tensor, nn.Parameter, nn.Par
     """
     w = _w_assert(w)
     assert len(w) == 8
-    k0 = torch.cat(
-        [w[0], -w[1], -w[2], -w[3], -w[4], -w[5], -w[6], w[7]], dim=1
-    )
-    k1 = torch.cat(
-        [w[1], w[0], w[4], w[5], -w[2], -w[3], -w[7], -w[6]], dim=1
-    )
-    k2 = torch.cat(
-        [w[2], -w[4], w[0], w[6], w[1], w[7], -w[3], w[5]], dim=1
-    )
-    k3 = torch.cat(
-        [w[3], -w[5], -w[6], w[0], -w[7], w[1], w[2], -w[4]], dim=1
-    )
-    k4 = torch.cat(
-        [w[4], w[2], -w[1], -w[7], w[0], w[6], -w[5], -w[3]], dim=1
-    )
-    k5 = torch.cat(
-        [w[5], w[3], w[7], -w[1], -w[6], w[0], w[4], w[2]], dim=1
-    )
-    k6 = torch.cat(
-        [w[6], -w[7], w[3], -w[2], w[5], -w[4], w[0], -w[1]], dim=1
-    )
-    k7 = torch.cat(
-        [w[7], w[6], -w[5], w[4], w[3], -w[2], w[1], w[0]], dim=1
-    )
+    k0 = torch.cat([w[0], -w[1], -w[2], -w[3], -w[4], -w[5], -w[6], w[7]], dim=1)
+    k1 = torch.cat([w[1], w[0], w[4], w[5], -w[2], -w[3], -w[7], -w[6]], dim=1)
+    k2 = torch.cat([w[2], -w[4], w[0], w[6], w[1], w[7], -w[3], w[5]], dim=1)
+    k3 = torch.cat([w[3], -w[5], -w[6], w[0], -w[7], w[1], w[2], -w[4]], dim=1)
+    k4 = torch.cat([w[4], w[2], -w[1], -w[7], w[0], w[6], -w[5], -w[3]], dim=1)
+    k5 = torch.cat([w[5], w[3], w[7], -w[1], -w[6], w[0], w[4], w[2]], dim=1)
+    k6 = torch.cat([w[6], -w[7], w[3], -w[2], w[5], -w[4], w[0], -w[1]], dim=1)
+    k7 = torch.cat([w[7], w[6], -w[5], w[4], w[3], -w[2], w[1], w[0]], dim=1)
     k = torch.cat([k0, k1, k2, k3, k4, k5, k6, k7], dim=0)
     return k

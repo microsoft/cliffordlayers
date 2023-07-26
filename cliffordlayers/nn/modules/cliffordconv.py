@@ -39,7 +39,7 @@ class _CliffordConvNd(nn.Module):
         super().__init__()
         sig = CliffordSignature(g)
         # register as buffer as we want the tensor to be moved to the same device as the module
-        self.register_buffer('g', sig.g)
+        self.register_buffer("g", sig.g)
         self.dim = sig.dim
         self.n_blades = sig.n_blades
         if rotation:
@@ -123,7 +123,7 @@ class _CliffordConvNd(nn.Module):
             bound = 1 / math.sqrt(fan_in)
             nn.init.uniform_(self.bias, -bound, bound)
 
-    def forward(self, x: torch.Tensor, conv_fn: callable) -> torch.Tensor:      
+    def forward(self, x: torch.Tensor, conv_fn: callable) -> torch.Tensor:
         if self.bias is not None:
             b = self.bias.view(-1)
         else:
@@ -185,7 +185,6 @@ class CliffordConv1d(_CliffordConvNd):
         bias: bool = True,
         padding_mode: str = "zeros",
     ) -> None:
-
         kernel_size_ = _single(kernel_size)
         stride_ = _single(stride)
         padding_ = _single(padding)
@@ -204,7 +203,7 @@ class CliffordConv1d(_CliffordConvNd):
             padding_mode,
         )
         if not self.dim == 1:
-            raise NotImplementedError(f"Wrong Clifford signature for CliffordConv1d.")
+            raise NotImplementedError("Wrong Clifford signature for CliffordConv1d.")
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         *_, I = x.shape
@@ -244,7 +243,6 @@ class CliffordConv2d(_CliffordConvNd):
         padding_mode: str = "zeros",
         rotation: bool = False,
     ):
-
         kernel_size_ = _pair(kernel_size)
         stride_ = _pair(stride)
         padding_ = padding if isinstance(padding, str) else _pair(padding)
@@ -264,7 +262,7 @@ class CliffordConv2d(_CliffordConvNd):
             rotation,
         )
         if not self.dim == 2:
-            raise NotImplementedError(f"Wrong Clifford signature for CliffordConv2d.")
+            raise NotImplementedError("Wrong Clifford signature for CliffordConv2d.")
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         *_, I = x.shape
@@ -302,7 +300,6 @@ class CliffordConv3d(_CliffordConvNd):
         bias: bool = True,
         padding_mode: str = "zeros",
     ):
-
         kernel_size_ = _triple(kernel_size)
         stride_ = _triple(stride)
         padding_ = padding if isinstance(padding, str) else _triple(padding)
@@ -321,7 +318,7 @@ class CliffordConv3d(_CliffordConvNd):
             padding_mode,
         )
         if not self.dim == 3:
-            raise NotImplementedError(f"Wrong Clifford signature for CliffordConv3d.")
+            raise NotImplementedError("Wrong Clifford signature for CliffordConv3d.")
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         *_, I = x.shape

@@ -11,8 +11,6 @@ def test_2d_clifford_rotation_kernel():
     """Test Clifford2d rotational kernels against quaternion kernels using g = [-1, -1].
     The scalar parts of the Clifford2d rotational kernel are ignored.
     """
-    in_channels = 8
-    out_channels = 16
     weights = [
         torch.randn(3, 4),
         torch.randn(3, 4),

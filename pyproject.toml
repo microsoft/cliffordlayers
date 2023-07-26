@@ -1,0 +1,40 @@
+[project]
+name = "cliffordlayers"
+dynamic = ["version"]
+description = "A PyTorch library for Clifford layers"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [{name = "Jayesh K. Gupta", email = "mail@rejuvyesh.com"}, {name="Johannes Brandstetter", email="johannesb@microsoft.com"}, {name="David Ruhe", email="d.ruhe@uva.nl"}]
+
+dependencies = ["torch"]
+
+classifiers = [
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Development Status :: 4 - Beta",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.urls]
+homepage = "https://microsoft.github.io/cliffordlayers"
+repository = "https://github.com/microsoft/cliffordlayers"
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2", "wheel"]
+
+[tool.setuptools]
+packages = ["cliffordlayers"]
+
+[tool.setuptools_scm]
+
+[tool.ruff]
+ignore = ['E501', 'E741']
+
+[tool.black]
+line-length = 120

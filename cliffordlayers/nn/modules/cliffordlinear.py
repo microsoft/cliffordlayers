@@ -35,7 +35,7 @@ class CliffordLinear(nn.Module):
     ) -> None:
         super().__init__()
         sig = CliffordSignature(g)
-        
+
         self.register_buffer("g", sig.g)
         self.dim = sig.dim
         self.n_blades = sig.n_blades

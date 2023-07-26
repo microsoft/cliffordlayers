@@ -11,9 +11,7 @@ class CliffordAlgebra:
         self.bbo = ShortLexBasisBladeOrder(self.num_bases)
         self.dim = len(self.metric)
         self.n_blades = len(self.bbo.grades)
-        self.cayley = construct_gmt(
-            self.bbo.index_to_bitmap, self.bbo.bitmap_to_index, self.metric
-        ).to_dense()
+        self.cayley = construct_gmt(self.bbo.index_to_bitmap, self.bbo.bitmap_to_index, self.metric).to_dense()
 
     def to(self, device: torch.device):
         self.bbo.grades = self.bbo.grades.to(device)
@@ -35,7 +33,7 @@ class CliffordAlgebra:
         In Geometric Algebra, the reverse of a multivector is formed by reversing the order of the vectors in each blade.
 
         Args:
-            mv (torch.Tensor): Input multivectors. 
+            mv (torch.Tensor): Input multivectors.
             blades (Union[tuple, list, torch.Tensor], optional): Specify which blades are present in the multivector.
 
         Returns:
@@ -51,11 +49,11 @@ class CliffordAlgebra:
         """
         Embeds the input tensor into a multivector.
 
-        This method takes a tensor and embeds it into a multivector, with the tensor elements assigned to the basis blades 
+        This method takes a tensor and embeds it into a multivector, with the tensor elements assigned to the basis blades
         specified by the tensor_index.
 
         Args:
-            tensor (torch.Tensor): The input tensor to be embedded. 
+            tensor (torch.Tensor): The input tensor to be embedded.
             tensor_index (tuple[int]): A tuple of integers specifying the blades where tensor elements are to be placed.
 
         Returns:
@@ -77,7 +75,7 @@ class CliffordAlgebra:
         """
         Extracts the components of a multivector corresponding to the specified blade indices.
 
-        This method takes a multivector and a tuple of blade indices, and returns the components of the multivector 
+        This method takes a multivector and a tuple of blade indices, and returns the components of the multivector
         that correspond to those indices.
 
         Args:
