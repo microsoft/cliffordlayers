@@ -14,7 +14,7 @@ from torch.nn import functional as F
 from cliffordlayers.nn.modules.cliffordconv import CliffordConv2d
 from cliffordlayers.nn.modules.cliffordfourier import CliffordSpectralConv2d
 from cliffordlayers.nn.modules.groupnorm import CliffordGroupNorm2d
-from cliffordlayers.models.custom_layers import CliffordConv2dDecoder, CliffordConv2dEncoder
+from cliffordlayers.models.custom_layers import CliffordConv2dScalarVectorEncoder, CliffordConv2dScalarVectorDecoder
 
 
 class CliffordBasicBlock2d(nn.Module):
@@ -147,12 +147,12 @@ class CliffordFourierBasicBlock2d(nn.Module):
         return self.activation(self.norm(x1 + x2))
 
 
-class CliffordNet2d(nn.Module):
-    """2D building block for Clifford architectures with ResNet backbone network.
-    The backbone networks follows these three steps:
-        1. Clifford encoding.
+class CliffordFluidNet2d(nn.Module):
+    """2D building block for Clifford architectures for fluid mechanics (vector field+scalar field)
+    with ResNet backbone network. The backbone networks follows these three steps:
+        1. Clifford scalar+vector field encoding.
         2. Basic blocks as provided.
-        3. Decoding.
+        3. Clifford scalar+vector field decoding.
 
     Args:
         g (Union[tuple, list, torch.Tensor]): Signature of Clifford algebra.
@@ -186,7 +186,7 @@ class CliffordNet2d(nn.Module):
 
         self.activation = activation
         # Encoding and decoding layers
-        self.encoder = CliffordConv2dEncoder(
+        self.encoder = CliffordConv2dScalarVectorEncoder(
             g,
             in_channels=in_channels,
             out_channels=hidden_channels,
@@ -194,7 +194,7 @@ class CliffordNet2d(nn.Module):
             padding=0,
             rotation=rotation,
         )
-        self.decoder = CliffordConv2dDecoder(
+        self.decoder = CliffordConv2dScalarVectorDecoder(
             g,
             in_channels=hidden_channels,
             out_channels=out_channels,
