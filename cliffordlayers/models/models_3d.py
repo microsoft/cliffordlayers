@@ -14,11 +14,11 @@ from torch.nn import functional as F
 from cliffordlayers.nn.modules.cliffordconv import CliffordConv3d
 from cliffordlayers.nn.modules.cliffordfourier import CliffordSpectralConv3d
 from cliffordlayers.nn.modules.groupnorm import CliffordGroupNorm3d
-from cliffordlayers.models.custom_layers import CliffordConv3dDecoder, CliffordConv3dEncoder
+from cliffordlayers.models.custom_layers import CliffordConv3dMaxwellEncoder, CliffordConv3dMaxwellDecoder
 
 
 class CliffordFourierBasicBlock3d(nn.Module):
-    """2D building block for Clifford FNO architectures.
+    """3D building block for Clifford FNO architectures.
 
     Args:
         g (Union[tuple, list, torch.Tensor]): Signature of Clifford algebra.
@@ -79,12 +79,12 @@ class CliffordFourierBasicBlock3d(nn.Module):
         return self.activation(self.norm(x1 + x2))
 
 
-class CliffordNet3d(nn.Module):
+class CliffordMaxwellNet3d(nn.Module):
     """3D building block for Clifford architectures with ResNet backbone network.
     The backbone networks follows these three steps:
-        1. Clifford encoding.
+        1. Clifford vector+bivector encoding.
         2. Basic blocks as provided.
-        3. Decoding.
+        3. Clifford vector+bivector decoding.
 
     Args:
         g (Union[tuple, list, torch.Tensor]): Signature of Clifford algebra.
@@ -116,14 +116,14 @@ class CliffordNet3d(nn.Module):
 
         self.activation = activation
         # Encoding and decoding layers.
-        self.encoder = CliffordConv3dEncoder(
+        self.encoder = CliffordConv3dMaxwellEncoder(
             g,
             in_channels=in_channels,
             out_channels=hidden_channels,
             kernel_size=1,
             padding=0,
         )
-        self.decoder = CliffordConv3dDecoder(
+        self.decoder = CliffordConv3dMaxwellDecoder(
             g,
             in_channels=hidden_channels,
             out_channels=out_channels,

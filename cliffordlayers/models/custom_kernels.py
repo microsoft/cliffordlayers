@@ -13,7 +13,7 @@ import torch.nn as nn
 from cliffordlayers.nn.functional.utils import _w_assert
 
 
-def get_2d_clifford_encoding_kernel(
+def get_2d_scalar_vector_encoding_kernel(
     w: Union[tuple, list, torch.Tensor, nn.Parameter, nn.ParameterList], g: torch.Tensor
 ) -> Tuple[int, torch.Tensor]:
     """Clifford kernel for 2d Clifford algebra encoding layers.
@@ -40,7 +40,7 @@ def get_2d_clifford_encoding_kernel(
     return 4, k
 
 
-def get_2d_clifford_decoding_kernel(
+def get_2d_scalar_vector_decoding_kernel(
     w: Union[tuple, list, torch.Tensor, nn.Parameter, nn.ParameterList], g: torch.Tensor
 ) -> Tuple[int, torch.Tensor]:
     """Clifford kernel for 2d Clifford algebra decoding layers.
@@ -66,7 +66,7 @@ def get_2d_clifford_decoding_kernel(
     return 3, k
 
 
-def get_2d_clifford_rotation_encoding_kernel(
+def get_2d_rotation_scalar_vector_encoding_kernel(
     w: Union[tuple, list, torch.Tensor, nn.Parameter, nn.ParameterList], g: torch.Tensor
 ) -> Tuple[int, torch.Tensor]:
     """Rotational Clifford kernel for 2d Clifford algebra encoding layers.
@@ -146,7 +146,7 @@ def get_2d_clifford_rotation_encoding_kernel(
     return 4, k
 
 
-def get_2d_clifford_rotation_decoding_kernel(
+def get_2d_rotation_scalar_vector_decoding_kernel(
     w: Union[tuple, list, torch.Tensor, nn.Parameter, nn.ParameterList], g: torch.Tensor
 ) -> Tuple[int, torch.Tensor]:
     """Rotational Clifford kernel for 2d Clifford algebra decoding layers.
@@ -220,7 +220,7 @@ def get_2d_clifford_rotation_decoding_kernel(
     return 3, k
 
 
-def get_3d_clifford_encoding_kernel(
+def get_3d_maxwell_encoding_kernel(
     w: Union[tuple, list, torch.Tensor, nn.Parameter, nn.ParameterList], g: torch.Tensor
 ) -> Tuple[int, torch.Tensor]:
     """Clifford kernel for 3d Clifford algebra encoding layers.
@@ -269,7 +269,7 @@ def get_3d_clifford_encoding_kernel(
     return 8, k
 
 
-def get_3d_clifford_decoding_kernel(
+def get_3d_maxwell_decoding_kernel(
     w: Union[tuple, list, torch.Tensor, nn.Parameter, nn.ParameterList], g: torch.Tensor
 ) -> Tuple[int, torch.Tensor]:
     """Clifford kernel for 3d Clifford algebra decoding layers.

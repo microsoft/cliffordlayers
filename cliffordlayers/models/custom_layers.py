@@ -13,17 +13,17 @@ from cliffordlayers.nn.modules.cliffordconv import (
     CliffordConv3d,
 )
 from cliffordlayers.models.custom_kernels import (
-    get_2d_clifford_encoding_kernel,
-    get_2d_clifford_decoding_kernel,
-    get_2d_clifford_rotation_encoding_kernel,
-    get_2d_clifford_rotation_decoding_kernel,
-    get_3d_clifford_encoding_kernel,
-    get_3d_clifford_decoding_kernel,
+    get_2d_scalar_vector_encoding_kernel,
+    get_2d_scalar_vector_decoding_kernel,
+    get_2d_rotation_scalar_vector_encoding_kernel,
+    get_2d_rotation_scalar_vector_decoding_kernel,
+    get_3d_maxwell_encoding_kernel,
+    get_3d_maxwell_decoding_kernel,
 )
 
 
-class CliffordConv2dEncoder(CliffordConv2d):
-    """2d Clifford convolution encoder which inherits from CliffordConv2d."""
+class CliffordConv2dScalarVectorEncoder(CliffordConv2d):
+    """2d Clifford convolution encoder for scalar+vector input fields which inherits from CliffordConv2d."""
 
     def __init__(
         self,
@@ -54,16 +54,16 @@ class CliffordConv2dEncoder(CliffordConv2d):
         )
 
         if rotation:
-            self._get_kernel = get_2d_clifford_rotation_encoding_kernel
+            self._get_kernel = get_2d_rotation_scalar_vector_encoding_kernel
         else:
-            self._get_kernel = get_2d_clifford_encoding_kernel
+            self._get_kernel = get_2d_scalar_vector_encoding_kernel
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return super(CliffordConv2d, self).forward(x, F.conv2d)
 
 
-class CliffordConv2dDecoder(CliffordConv2d):
-    """2d Clifford convolution decoder which inherits from CliffordConv2d."""
+class CliffordConv2dScalarVectorDecoder(CliffordConv2d):
+    """2d Clifford convolution decoder for scalar+vector output fields which inherits from CliffordConv2d."""
 
     def __init__(
         self,
@@ -94,9 +94,9 @@ class CliffordConv2dDecoder(CliffordConv2d):
         )
 
         if rotation:
-            self._get_kernel = get_2d_clifford_rotation_decoding_kernel
+            self._get_kernel = get_2d_rotation_scalar_vector_decoding_kernel
         else:
-            self._get_kernel = get_2d_clifford_decoding_kernel
+            self._get_kernel = get_2d_scalar_vector_decoding_kernel
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         if self.bias is True:
@@ -104,8 +104,8 @@ class CliffordConv2dDecoder(CliffordConv2d):
         return super(CliffordConv2d, self).forward(x, F.conv2d)
 
 
-class CliffordConv3dEncoder(CliffordConv3d):
-    """3d Clifford convolution encoder which inherits from CliffordConv3d."""
+class CliffordConv3dMaxwellEncoder(CliffordConv3d):
+    """3d Clifford convolution encoder for vector+bivector inputs which inherits from CliffordConv3d."""
 
     def __init__(
         self,
@@ -133,14 +133,14 @@ class CliffordConv3dEncoder(CliffordConv3d):
             padding_mode,
         )
 
-        self._get_kernel = get_3d_clifford_encoding_kernel
+        self._get_kernel = get_3d_maxwell_encoding_kernel
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return super(CliffordConv3d, self).forward(x, F.conv3d)
 
 
-class CliffordConv3dDecoder(CliffordConv3d):
-    """3d Clifford convolution decoder which inherits from CliffordConv3d."""
+class CliffordConv3dMaxwellDecoder(CliffordConv3d):
+    """3d Clifford convolution decoder for vector+bivector inputs which inherits from CliffordConv3d."""
 
     def __init__(
         self,
@@ -168,7 +168,7 @@ class CliffordConv3dDecoder(CliffordConv3d):
             padding_mode,
         )
 
-        self._get_kernel = get_3d_clifford_decoding_kernel
+        self._get_kernel = get_3d_maxwell_decoding_kernel
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         if self.bias is True:
