@@ -12,6 +12,8 @@ All these modules are available for different algebras.
 
 ::: cliffordlayers.nn.modules.cliffordfourier
 
+::: cliffordlayers.nn.modules.gcan
+
 ::: cliffordlayers.nn.modules.batchnorm
 
 ::: cliffordlayers.nn.modules.groupnorm

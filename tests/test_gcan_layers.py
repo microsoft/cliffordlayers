@@ -1,5 +1,5 @@
 import torch
-from cliffordlayers.nn.modules.gcan_layers import (
+from cliffordlayers.nn.modules.gcan import (
     CliffordG3ConvTranspose2d,
     CliffordG3GroupNorm,
     CliffordG3SiLU,
