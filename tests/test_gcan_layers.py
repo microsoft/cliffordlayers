@@ -2,8 +2,10 @@ import torch
 from cliffordlayers.nn.modules.gcan import (
     CliffordG3ConvTranspose2d,
     CliffordG3GroupNorm,
-    CliffordG3SiLU,
     CliffordG3Conv2d,
+    CliffordG3LinearVSiLU,
+    CliffordG3MeanVSiLU,
+    CliffordG3SumVSiLU,
     PGAConjugateLinear,
     MultiVectorAct,
 )
@@ -25,9 +27,15 @@ def test_g3groupnorm():
 
 
 def test_g3vector_act():
-    g3vectorlinear = CliffordG3SiLU(8)
+    g3vectorlinear = CliffordG3LinearVSiLU(8)
+    g3vectorsum = CliffordG3SumVSiLU()
+    g3vectormean = CliffordG3MeanVSiLU()
     x = torch.randn(4, 8, 32, 32, 3)
     y = g3vectorlinear(x)
+    assert y.shape == (4, 8, 32, 32, 3)
+    y = g3vectorsum(x)
+    assert y.shape == (4, 8, 32, 32, 3)
+    y = g3vectormean(x)
     assert y.shape == (4, 8, 32, 32, 3)
 
 

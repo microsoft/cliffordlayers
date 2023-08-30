@@ -3,20 +3,23 @@ from typing import Callable, List, Tuple, Union
 import torch
 from torch import nn
 
-from cliffordlayers.nn.modules.gcan import (CliffordG3Conv2d,
-                                            CliffordG3ConvTranspose2d,
-                                            CliffordG3GroupNorm,
-                                            CliffordG3SiLU, CliffordG3VMean,
-                                            CliffordG3VSum)
+from cliffordlayers.nn.modules.gcan import (
+    CliffordG3Conv2d,
+    CliffordG3ConvTranspose2d,
+    CliffordG3GroupNorm,
+    CliffordG3LinearVSiLU,
+    CliffordG3SumVSiLU,
+    CliffordG3MeanVSiLU,
+)
 
 
 def get_activation(activation: str, channels: int) -> Callable:
     if activation == "vsum":
-        return CliffordG3VSum()
+        return CliffordG3SumVSiLU()
     elif activation == "vmean":
-        return CliffordG3VMean()
+        return CliffordG3MeanVSiLU()
     elif activation == "vlin":
-        return CliffordG3SiLU(channels)
+        return CliffordG3LinearVSiLU(channels)
     else:
         raise NotImplementedError(f"Activation {activation} not implemented")
 

@@ -374,9 +374,9 @@ class CliffordG3ConvTranspose2d(_CliffordG3ConvNd):
         return torch.stack([e_0, e_1, e_2], dim=-1)
 
 
-class CliffordG3SiLU(nn.Module):
+class CliffordG3LinearVSiLU(nn.Module):
     """
-    A module that applies the vector SiLU to vectors in G3.
+    A module that applies the vector SiLU using a linear combination to vectors in G3.
 
     Args:
         channels (int): Number of channels in the input.
@@ -390,24 +390,24 @@ class CliffordG3SiLU(nn.Module):
         return input * torch.sigmoid(self.conv(input))
 
 
-class CliffordG3VSum(nn.Module):
+class CliffordG3SumVSiLU(nn.Module):
     """
-    A module that applies the vector sum to vectors in G3.
+    A module that applies the vector SiLU using vector sum to vectors in G3.
     """
 
-    def __init__():
+    def __init__(self):
         super().__init__()
 
     def forward(self, input):
         return torch.sigmoid(input.mean(-1, keepdim=True)) * input
 
 
-class CliffordG3VMean(nn.Module):
+class CliffordG3MeanVSiLU(nn.Module):
     """
-    A module that applies the vector mean to vectors in G3.
+    A module that applies the vector SiLU using vector mean to vectors in G3.
     """
 
-    def __init__():
+    def __init__(self):
         super().__init__()
 
     def forward(self, input):
