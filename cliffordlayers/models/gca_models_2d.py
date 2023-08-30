@@ -3,19 +3,18 @@ from typing import Callable, List, Tuple, Union
 import torch
 from torch import nn
 
-from cliffordlayers.nn.modules.gcan import (
-    CliffordG3Conv2d,
-    CliffordG3ConvTranspose2d,
-    CliffordG3GroupNorm,
-    CliffordG3SiLU,
-)
+from cliffordlayers.nn.modules.gcan import (CliffordG3Conv2d,
+                                            CliffordG3ConvTranspose2d,
+                                            CliffordG3GroupNorm,
+                                            CliffordG3SiLU, CliffordG3VMean,
+                                            CliffordG3VSum)
 
 
 def get_activation(activation: str, channels: int) -> Callable:
     if activation == "vsum":
-        return lambda x: torch.sigmoid(x.sum(-1, keepdim=True)) * x
+        return CliffordG3VSum()
     elif activation == "vmean":
-        return lambda x: torch.sigmoid(x.mean(-1, keepdim=True)) * x
+        return CliffordG3VMean()
     elif activation == "vlin":
         return CliffordG3SiLU(channels)
     else:
@@ -23,6 +22,21 @@ def get_activation(activation: str, channels: int) -> Callable:
 
 
 class CliffordG3BasicBlock2d(nn.Module):
+    """
+    Basic block for G3 convolutions on 2D grids, comprising two G3 Clifford convolutional layers.
+
+    Args:
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        kernel_size (int, optional): Size of the convolutional kernel. Defaults to 3.
+        stride (int, optional): Stride of the convolution operation. Defaults to 1.
+        padding (int, optional): Padding added to both sides of the input. Defaults to 1.
+        activation (str, optional): Type of activation function. Defaults to "vlin".
+        norm (bool, optional): If True, normalization is applied. Defaults to True.
+        num_groups (int, optional): Number of groups for the group normalization. Defaults to 1.
+        prenorm (bool, optional): If True, normalization is applied before activation, otherwise after. Defaults to True.
+    """
+
     expansion: int = 1
 
     def __init__(
@@ -32,7 +46,7 @@ class CliffordG3BasicBlock2d(nn.Module):
         kernel_size: int = 3,
         stride: int = 1,
         padding: int = 1,
-        activation: str = "relu",
+        activation: str = "vlin",
         norm: bool = True,
         num_groups: int = 1,
         prenorm: bool = True,
@@ -84,6 +98,21 @@ class CliffordG3BasicBlock2d(nn.Module):
 
 
 class CliffordG3ResNet2d(nn.Module):
+    """
+    ResNet for G3 Clifford convolutions on 2D grids.
+
+    Args:
+        num_blocks (list): Number of blocks at each resolution.
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        hidden_channels (int): Number of hidden channels.
+        activation (str, optional): Type of activation function. Defaults to "vlin".
+        block (nn.Module, optional): Type of block. Defaults to CliffordG3BasicBlock2d.
+        norm (bool, optional): If True, normalization is applied. Defaults to True.
+        num_groups (int, optional): Number of groups for the group normalization. Defaults to 1.
+        prenorm (bool, optional): If True, normalization is applied before activation, otherwise after. Defaults to True.
+    """
+
     padding = 9
 
     def __init__(
@@ -183,6 +212,18 @@ class CliffordG3ResNet2d(nn.Module):
 
 
 class CliffordG3DownBlock(nn.Module):
+    """
+    UNet encoder block for G3 Clifford convolutions on 2D grids.
+
+    Args:
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        activation (str): Type of activation function.
+        norm (bool, optional): If True, normalization is applied. Defaults to False.
+        prenorm (bool, optional): If True, normalization is applied before activation, otherwise after. Defaults to True.
+        num_groups (int, optional): Number of groups for the group normalization. Defaults to 1.
+    """
+
     def __init__(
         self,
         in_channels: int,
@@ -205,7 +246,10 @@ class CliffordG3DownBlock(nn.Module):
 
 class CliffordG3Downsample(nn.Module):
     """
-    ### Scale down the feature map by $\frac{1}{2} \times$
+    Scale down the two-dimensional G3 Clifford feature map by a half.
+
+    Args:
+        n_channels (int): Number of channels.
     """
 
     def __init__(self, n_channels):
@@ -224,6 +268,17 @@ class CliffordG3Downsample(nn.Module):
 
 
 class CliffordG3MiddleBlock(nn.Module):
+    """
+    UNet middle block for G3 Clifford convolutions on 2D grids.
+
+    Args:
+        n_channels (int): Number of channels.
+        activation (str): Type of activation function.
+        norm (bool, optional): If True, normalization is applied. Defaults to False.
+        prenorm (bool, optional): If True, normalization is applied before activation, otherwise after. Defaults to True.
+        num_groups (int, optional): Number of groups for the group normalization. Defaults to 1.
+    """
+
     def __init__(
         self,
         n_channels: int,
@@ -257,6 +312,18 @@ class CliffordG3MiddleBlock(nn.Module):
 
 
 class CliffordG3UpBlock(nn.Module):
+    """
+    UNet decoder block for G3 Clifford convolutions on 2D grids.
+
+    Args:
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        activation (str): Type of activation function.
+        norm (bool, optional): If True, normalization is applied. Defaults to False.
+        prenorm (bool, optional): If True, normalization is applied before activation, otherwise after. Defaults to True.
+        num_groups (int, optional): Number of groups for the group normalization. Defaults to 1.
+    """
+
     def __init__(
         self,
         in_channels: int,
@@ -284,7 +351,10 @@ class CliffordG3UpBlock(nn.Module):
 
 class CliffordUpsample(nn.Module):
     """
-    ### Scale up the feature map by $2 \times$
+    Scale up the two-dimensional G3 Clifford feature map by a factor of two.
+
+    Args:
+        n_channels (int): Number of channels.
     """
 
     def __init__(self, n_channels: int):
@@ -302,6 +372,22 @@ class CliffordUpsample(nn.Module):
 
 
 class CliffordG3UNet2d(nn.Module):
+    """
+    U-Net architecture with Clifford G3 convolutions for 2D grids.
+
+    Args:
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        hidden_channels (int): Number of channels in the first hidden convolutional layer.
+        activation (str, optional): Type of activation function. Defaults to "vlin".
+        norm (bool, optional): If True, normalization is applied. Defaults to False.
+        ch_mults (Union[Tuple[int, ...], List[int]], optional): Multipliers for the number of channels at each depth.
+                                                            Defaults to (1, 2, 2, 2).
+        n_blocks (int, optional): Number of convolutional blocks at each resolution. Defaults to 2.
+        prenorm (bool, optional): If True, normalization is applied before activation, otherwise after. Defaults to True.
+        num_groups (int, optional): Number of groups for the group normalization. Defaults to 1.
+    """
+
     def __init__(
         self,
         in_channels: int,
