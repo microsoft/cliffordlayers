@@ -1,11 +1,26 @@
 import math
+
 import torch
 from torch import nn
 from torch.nn.modules.utils import _pair
+
 from cliffordlayers.nn.functional.cliffordg3conv import clifford_g3convnd
 
 
 def get_clifford_left_kernel(M, w, flatten=True):
+    """
+    Obtains the matrix that computes the geometric product from the left.
+    When the output is flattened, it can be used to apply a fully connected
+    layer on the multivectors.
+
+    Args:
+        M (Tensor): Cayley table that defines the geometric relation.
+        w (Tensor): Input tensor with shape (o, i, c) where o is the number of output channels,
+                    i is the number of input channels, and c is the number of blades.
+        flatten (bool, optional): If True, the resulting matrix will be reshaped for subsequent
+                                  fully connected operations. Defaults to True.
+
+    """
     o, i, c = w.size()
     k = torch.einsum("ijk, pqi->jpkq", M, w)
     if flatten:
@@ -14,6 +29,18 @@ def get_clifford_left_kernel(M, w, flatten=True):
 
 
 def get_clifford_right_kernel(M, w, flatten=True):
+    """
+    Obtains the matrix that computes the geometric product from the right.
+    When the output is flattened, it can be used to apply a fully connected
+    layer on the multivectors.
+
+    Args:
+        M (Tensor): Cayley table that defines the geometric relation.
+        w (Tensor): Input tensor with shape (o, i, c) where o is the number of output channels,
+                    i is the number of input channels, and c is the number of blades.
+        flatten (bool, optional): If True, the resulting matrix will be reshaped for subsequent
+                                    fully connected operations. Defaults to True.
+    """
     o, i, c = w.size()
     k = torch.einsum("ijk, pqk->jpiq", M, w)
     if flatten:
@@ -22,6 +49,18 @@ def get_clifford_right_kernel(M, w, flatten=True):
 
 
 class PGAConjugateLinear(nn.Module):
+    """
+    Linear layer that applies the PGA conjugation to the input.
+
+    Args:
+        in_features (int): Number of input features.
+        out_features (int): Number of output features.
+        algebra (Algebra): Algebra object that defines the geometric product.
+        input_blades (tuple): Nonnegative blades of the input multivectors.
+        action_blades (tuple, optional): Blades of the action. Defaults to (0, 5, 6, 7, 8, 9, 10, 15),
+                                         which encodes rotation and translation.
+    """
+
     def __init__(
         self,
         in_features,
@@ -85,6 +124,17 @@ class PGAConjugateLinear(nn.Module):
 
 
 class MultiVectorAct(nn.Module):
+    """
+    A module to apply multivector activations to the input.
+
+    Args:
+        channels (int): Number of channels in the input.
+        algebra: The algebra object that defines the geometric product.
+        input_blades (list, tuple): The nonnegative input blades.
+        kernel_blades (list, tuple, optional): The blades that will be used to compute the activation. Defaults to all input blades.
+        agg (str, optional): The aggregation method to be used. Options include "linear", "sum", and "mean". Defaults to "linear".
+    """
+
     def __init__(self, channels, algebra, input_blades, kernel_blades=None, agg="linear"):
         super().__init__()
         self.algebra = algebra
@@ -113,6 +163,20 @@ class MultiVectorAct(nn.Module):
 
 
 class _CliffordG3ConvNd(nn.Module):
+    """
+    A Clifford geometric algebra convolutional layer for N-dimensional fields where the features are vectors in G3.
+    Args:
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        kernel_size (int, optional): Size of the convolutional kernel. Defaults to 1.
+        stride (int, optional): Stride of the convolution operation. Defaults to 1.
+        padding (int, optional): Padding added to both sides of the input. Defaults to 0.
+        dilation (int, optional): Dilation rate of the kernel. Defaults to 1.
+        groups (int, optional): Number of blocked connections from input channels to output channels. Defaults to 1.
+        transposed (bool, optional): If True, performs a transposed convolution. Defaults to False.
+        bias (bool, optional): If True, adds a bias term to the output. Defaults to True.
+    """
+
     def __init__(
         self,
         in_channels: int,
@@ -187,6 +251,20 @@ class _CliffordG3ConvNd(nn.Module):
 
 
 class CliffordG3Conv2d(_CliffordG3ConvNd):
+    """
+    2D convolutional layer where the features are vectors in G3.
+
+    Args:
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        kernel_size (int, optional): Size of the convolutional kernel. Defaults to 1.
+        stride (int, optional): Stride of the convolution operation. Defaults to 1.
+        padding (int or str, optional): Padding added to both sides of the input or padding mode. Defaults to 0.
+        dilation (int, optional): Dilation rate of the kernel. Defaults to 1.
+        groups (int, optional): Number of blocked connections from input channels to output channels. Defaults to 1.
+        bias (bool, optional): If True, adds a bias term to the output. Defaults to False.
+    """
+
     def __init__(
         self,
         in_channels: int,
@@ -235,6 +313,20 @@ class CliffordG3Conv2d(_CliffordG3ConvNd):
 
 
 class CliffordG3ConvTranspose2d(_CliffordG3ConvNd):
+    """
+    2D transposed convolutional layer where the features are vectors in G3.
+
+    Args:
+        in_channels (int): Number of input channels.
+        out_channels (int): Number of output channels.
+        kernel_size (int, optional): Size of the convolutional kernel. Defaults to 1.
+        stride (int, optional): Stride of the convolution operation. Defaults to 1.
+        padding (int or str, optional): Padding added to both sides of the input or padding mode. Defaults to 0.
+        dilation (int, optional): Dilation rate of the kernel. Defaults to 1.
+        groups (int, optional): Number of blocked connections from input channels to output channels. Defaults to 1.
+        bias (bool, optional): If True, adds a bias term to the output. Defaults to False.
+    """
+
     def __init__(
         self,
         in_channels: int,
@@ -282,7 +374,14 @@ class CliffordG3ConvTranspose2d(_CliffordG3ConvNd):
         return torch.stack([e_0, e_1, e_2], dim=-1)
 
 
-class CliffordG3SiLU(nn.Module):
+class CliffordG3LinearVSiLU(nn.Module):
+    """
+    A module that applies the vector SiLU using a linear combination to vectors in G3.
+
+    Args:
+        channels (int): Number of channels in the input.
+    """
+
     def __init__(self, channels):
         super().__init__()
         self.conv = nn.Conv3d(channels, channels, (1, 1, 3), groups=channels)
@@ -291,7 +390,41 @@ class CliffordG3SiLU(nn.Module):
         return input * torch.sigmoid(self.conv(input))
 
 
+class CliffordG3SumVSiLU(nn.Module):
+    """
+    A module that applies the vector SiLU using vector sum to vectors in G3.
+    """
+
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, input):
+        return torch.sigmoid(input.mean(-1, keepdim=True)) * input
+
+
+class CliffordG3MeanVSiLU(nn.Module):
+    """
+    A module that applies the vector SiLU using vector mean to vectors in G3.
+    """
+
+    def __init__(self):
+        super().__init__()
+
+    def forward(self, input):
+        return torch.sigmoid(input.mean(-1, keepdim=True)) * input
+
+
 class CliffordG3GroupNorm(nn.Module):
+    """
+    A module that applies group normalization to vectors in G3.
+
+    Args:
+        num_groups (int): Number of groups to normalize over.
+        num_features (int): Number of features in the input.
+        num_blades (int): Number of blades in the input.
+        scale_norm (bool, optional): If True, the output is scaled by the norm of the input. Defaults to False.
+    """
+
     def __init__(self, num_groups, num_features, num_blades, scale_norm=False):
         super().__init__()
         self.weight = nn.Parameter(torch.ones(num_features))
