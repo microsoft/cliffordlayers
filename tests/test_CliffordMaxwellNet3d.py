@@ -3,7 +3,7 @@
 
 import torch
 import torch.nn.functional as F
-from cliffordlayers.models.models_3d import (
+from cliffordlayers.models.basic.threed import (
     CliffordMaxwellNet3d,
     CliffordFourierBasicBlock3d,
 )

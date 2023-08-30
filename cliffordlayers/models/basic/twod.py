@@ -14,7 +14,7 @@ from torch.nn import functional as F
 from cliffordlayers.nn.modules.cliffordconv import CliffordConv2d
 from cliffordlayers.nn.modules.cliffordfourier import CliffordSpectralConv2d
 from cliffordlayers.nn.modules.groupnorm import CliffordGroupNorm2d
-from cliffordlayers.models.custom_layers import CliffordConv2dScalarVectorEncoder, CliffordConv2dScalarVectorDecoder
+from cliffordlayers.models.basic.custom_layers import CliffordConv2dScalarVectorEncoder, CliffordConv2dScalarVectorDecoder
 
 
 class CliffordBasicBlock2d(nn.Module):
