@@ -2,7 +2,7 @@
 # Licensed under the MIT license.
 
 import torch
-from cliffordlayers.models.custom_layers import (
+from cliffordlayers.models.basic.custom_layers import (
     CliffordConv2dScalarVectorEncoder,
     CliffordConv2dScalarVectorDecoder,
     CliffordConv3dMaxwellEncoder,

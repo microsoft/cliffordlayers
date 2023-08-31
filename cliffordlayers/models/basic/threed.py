@@ -14,7 +14,7 @@ from torch.nn import functional as F
 from cliffordlayers.nn.modules.cliffordconv import CliffordConv3d
 from cliffordlayers.nn.modules.cliffordfourier import CliffordSpectralConv3d
 from cliffordlayers.nn.modules.groupnorm import CliffordGroupNorm3d
-from cliffordlayers.models.custom_layers import CliffordConv3dMaxwellEncoder, CliffordConv3dMaxwellDecoder
+from cliffordlayers.models.basic.custom_layers import CliffordConv3dMaxwellEncoder, CliffordConv3dMaxwellDecoder
 
 
 class CliffordFourierBasicBlock3d(nn.Module):

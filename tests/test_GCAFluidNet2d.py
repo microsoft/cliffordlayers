@@ -2,7 +2,7 @@
 # Licensed under the MIT license.
 
 import torch
-from cliffordlayers.models.gca_models_2d import CliffordG3ResNet2d, CliffordG3UNet2d
+from cliffordlayers.models.gca.twod import CliffordG3ResNet2d, CliffordG3UNet2d
 
 
 def test_gca_resnet():

@@ -4,7 +4,7 @@
 import torch
 import torch.nn.functional as F
 from cliffordlayers.models.utils import partialclass
-from cliffordlayers.models.models_2d import (
+from cliffordlayers.models.basic.twod import (
     CliffordFluidNet2d,
     CliffordBasicBlock2d,
     CliffordFourierBasicBlock2d,

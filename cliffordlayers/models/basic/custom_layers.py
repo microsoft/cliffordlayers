@@ -12,7 +12,7 @@ from cliffordlayers.nn.modules.cliffordconv import (
     CliffordConv2d,
     CliffordConv3d,
 )
-from cliffordlayers.models.custom_kernels import (
+from cliffordlayers.models.basic.custom_kernels import (
     get_2d_scalar_vector_encoding_kernel,
     get_2d_scalar_vector_decoding_kernel,
     get_2d_rotation_scalar_vector_encoding_kernel,
