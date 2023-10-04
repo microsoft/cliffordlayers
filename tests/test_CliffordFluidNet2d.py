@@ -4,7 +4,7 @@
 import torch
 import torch.nn.functional as F
 from cliffordlayers.models.utils import partialclass
-from cliffordlayers.models.models_2d import (
+from cliffordlayers.models.basic.twod import (
     CliffordFluidNet2d,
     CliffordBasicBlock2d,
     CliffordFourierBasicBlock2d,
@@ -28,8 +28,8 @@ def test_clifford_resnet():
         rotation=False,
     )
     if torch.cuda.is_available():
-        x = x.to("cuda:0")
-        model = model.to("cuda:0")
+        x = x.to("cuda")
+        model = model.to("cuda")
     out = model(x)
     assert out.shape == (8, out_channels, 128, 128, 3)
 
@@ -50,10 +50,12 @@ def test_clifford_resnet_norm():
         norm=True,
         rotation=False,
     )
-    out = model(x)
+    
     if torch.cuda.is_available():
-        x = x.to("cuda:0")
-        model = model.to("cuda:0")
+        x = x.to("cuda")
+        model = model.to("cuda")
+
+    out = model(x)          
     assert out.shape == (8, out_channels, 128, 128, 3)
 
 
@@ -73,10 +75,12 @@ def test_clifford_rotational_resnet_norm():
         norm=True,
         rotation=True,
     )
-    out = model(x)
+    
     if torch.cuda.is_available():
-        x = x.to("cuda:0")
-        model = model.to("cuda:0")
+        x = x.to("cuda")
+        model = model.to("cuda")
+
+    out = model(x)        
     assert out.shape == (8, out_channels, 128, 128, 3)
 
 
@@ -96,10 +100,12 @@ def test_clifford_fourier_net():
         norm=False,
         rotation=False,
     )
-    out = model(x)
+    
     if torch.cuda.is_available():
-        x = x.to("cuda:0")
-        model = model.to("cuda:0")
+        x = x.to("cuda")
+        model = model.to("cuda")
+
+    out = model(x)        
     assert out.shape == (8, out_channels, 128, 128, 3)
 
 
@@ -119,10 +125,12 @@ def test_clifford_fourier_net_norm():
         norm=True,
         rotation=False,
     )
-    out = model(x)
+    
     if torch.cuda.is_available():
-        x = x.to("cuda:0")
-        model = model.to("cuda:0")
+        x = x.to("cuda")
+        model = model.to("cuda")
+    
+    out = model(x)          
     assert out.shape == (8, out_channels, 128, 128, 3)
 
 
@@ -142,8 +150,9 @@ def test_clifford_fourier_rotational_net_norm():
         norm=True,
         rotation=True,
     )
-    out = model(x)
     if torch.cuda.is_available():
-        x = x.to("cuda:0")
-        model = model.to("cuda:0")
+        x = x.to("cuda")
+        model = model.to("cuda")
+
+    out = model(x)
     assert out.shape == (8, out_channels, 128, 128, 3)
