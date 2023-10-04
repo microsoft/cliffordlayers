@@ -4,6 +4,7 @@
 import torch
 from cliffordlayers.models.gca.twod import CliffordG3ResNet2d, CliffordG3UNet2d
 
+
 def test_gca_resnet():
     x = torch.randn(8, 4, 128, 128, 3)
     in_channels = 4
