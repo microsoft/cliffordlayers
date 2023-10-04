@@ -399,7 +399,7 @@ class CliffordG3SumVSiLU(nn.Module):
         super().__init__()
 
     def forward(self, input):
-        return torch.sigmoid(input.mean(-1, keepdim=True)) * input
+        return torch.sigmoid(input.sum(-1, keepdim=True)) * input
 
 
 class CliffordG3MeanVSiLU(nn.Module):
