@@ -79,8 +79,12 @@ model = CliffordFluidNet2d(
 ```
 
 ::: cliffordlayers.models.basic.twod
+    options:
+        heading_level: 3
 
 ::: cliffordlayers.models.gca.twod
+    options:
+        heading_level: 3
 
 ## 3D models
 
@@ -106,3 +110,5 @@ model = CliffordMaxwellNet3d(
 ```
 
 ::: cliffordlayers.models.basic.threed
+    options:
+        heading_level: 3
