@@ -11,12 +11,12 @@ The following code snippet initializes a 2D Clifford ResNet.
 ```python
 import torch.nn.functional as F
 
-from cliffordlayers.models.models_2d import (
-    CliffordNet2d,
+from cliffordlayers.models.basic.twod import (
+    CliffordFluidNet2d,
     CliffordBasicBlock2d,
 )
 
-model = CliffordNet2d(
+model = CliffordFluidNet2d(
         g = [-1, -1],
         block = CliffordBasicBlock2d,
         num_blocks = [2, 2, 2, 2],
@@ -34,8 +34,8 @@ The following code snippet initializes a 2D rotational Clifford ResNet.
 ```python
 import torch.nn.functional as F
 
-from cliffordlayers.models.models_2d import (
-    CliffordNet2d,
+from cliffordlayers.models.basic.twod import (
+    CliffordFluidNet2d,
     CliffordBasicBlock2d,
 )
 
@@ -58,12 +58,12 @@ The following code snippet initializes a 2D Clifford FNO.
 import torch.nn.functional as F
 
 from cliffordlayers.models.utils import partialclass
-from cliffordlayers.models.models_2d import (
-    CliffordNet2d,
+from cliffordlayers.models.basic.twod import (
+    CliffordFluidNet2d,
     CliffordFourierBasicBlock2d,
 )
 
-model = CliffordNet2d(
+model = CliffordFluidNet2d(
         g = [-1, -1],
         block = partialclass(
                 "CliffordFourierBasicBlock2d", CliffordFourierBasicBlock2d, modes1=32, modes2=32
@@ -78,7 +78,9 @@ model = CliffordNet2d(
     )
 ```
 
-::: cliffordlayers.models.models_2d
+::: cliffordlayers.models.basic.twod
+
+::: cliffordlayers.models.gca.twod
 
 ## 3D models
 
@@ -88,10 +90,10 @@ The following code snippet initializes a 3D Clifford FNO.
 import torch.nn.functional as F
 
 from cliffordlayers.models.models_3d import (
-    CliffordNet3d,
+    CliffordMaxwellNet3d,
     CliffordFourierBasicBlock3d,
 )
-model = CliffordNet3d(
+model = CliffordMaxwellNet3d(
         g = [1, 1, 1],
         block = CliffordFourierBasicBlock3d,
         num_blocks = [1, 1, 1, 1],
@@ -103,4 +105,4 @@ model = CliffordNet3d(
     )
 ```
 
-::: cliffordlayers.models.models_3d
+::: cliffordlayers.models.basic.threed
