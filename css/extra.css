@@ -1,0 +1,10 @@
+[data-md-color-scheme="clifford"] {
+
+    --md-primary-fg-color:        #204E4A;
+    --md-primary-fg-color--light: #2E933C;
+    --md-primary-fg-color--dark:  #160C28;
+    --md-primary-bg-color:        #F4F1DE;
+
+    --md-accent-fg-color:        #2E933C;
+    --md-accent-fg-color--transparent:       hsla(93, 49%, 53%, 0.1);
+  }

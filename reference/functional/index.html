@@ -1,0 +1,2442 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for CliffordLayers">
+      
+      
+      
+      
+        <link rel="prev" href="../modules/">
+      
+      
+        <link rel="next" href="../misc/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+    
+    
+      
+        <title>Functional - CliffordLayers</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Merriweather Sans";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="clifford" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#functions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CliffordLayers" class="md-header__button md-logo" aria-label="CliffordLayers" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CliffordLayers
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Functional
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/cliffordlayers" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/cliffordlayers
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CliffordLayers" class="md-nav__button md-logo" aria-label="CliffordLayers" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    CliffordLayers
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/cliffordlayers" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/cliffordlayers
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Code reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Code reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Functional
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Functional
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.batchnorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      batchnorm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.batchnorm.clifford_batch_norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      clifford_batch_norm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.batchnorm.complex_batch_norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      complex_batch_norm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.batchnorm.whiten_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      whiten_data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.groupnorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      groupnorm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.groupnorm.clifford_group_norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      clifford_group_norm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.groupnorm.complex_group_norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      complex_group_norm
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../misc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.batchnorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      batchnorm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.batchnorm.clifford_batch_norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      clifford_batch_norm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.batchnorm.complex_batch_norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      complex_batch_norm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.batchnorm.whiten_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      whiten_data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.groupnorm" class="md-nav__link">
+    <span class="md-ellipsis">
+      groupnorm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.groupnorm.clifford_group_norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      clifford_group_norm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cliffordlayers.nn.functional.groupnorm.complex_group_norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      complex_group_norm
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">¤</a></h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="cliffordlayers.nn.functional.batchnorm"></a>
+  <div class="doc doc-contents first">
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="cliffordlayers.nn.functional.batchnorm.clifford_batch_norm" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">clifford_batch_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n_blades</span><span class="p">,</span> <span class="n">running_mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">running_cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">)</span></code>
+
+<a href="#cliffordlayers.nn.functional.batchnorm.clifford_batch_norm" class="headerlink" title="Permanent link">¤</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Clifford batch normalization for each channel across a batch of data.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Input tensor of shape <code>(B, C, *D, I)</code> where I is the blade of the algebra.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>n_blades</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Number of blades of the Clifford algebra.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_mean</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tensor with running mean statistics having shape <code>(I, C)</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_cov</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tensor with running covariance statistics having shape <code>(I, I, C)</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>weight</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a>, <span title="torch.Parameter">Parameter</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Additional weight tensor which is applied post normalization, and has the shape <code>(I, I, C)</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>bias</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a>, <span title="torch.Parameter">Parameter</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Additional bias tensor which is applied post normalization, and has the shape <code>(I, C)</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>training</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to use the running mean and variance. Defaults to True. Defaults to True.</p>
+            </div>
+          </td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>momentum</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Momentum for the running mean and variance. Defaults to 0.1.</p>
+            </div>
+          </td>
+          <td>
+                <code>0.1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>eps</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Epsilon for the running mean and variance. Defaults to 1e-05.</p>
+            </div>
+          </td>
+          <td>
+                <code>1e-05</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Normalized input of shape <code>(B, C, *D, I)</code></p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>cliffordlayers/nn/functional/batchnorm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-143">143</a></span>
+<span class="normal"><a href="#__codelineno-0-144">144</a></span>
+<span class="normal"><a href="#__codelineno-0-145">145</a></span>
+<span class="normal"><a href="#__codelineno-0-146">146</a></span>
+<span class="normal"><a href="#__codelineno-0-147">147</a></span>
+<span class="normal"><a href="#__codelineno-0-148">148</a></span>
+<span class="normal"><a href="#__codelineno-0-149">149</a></span>
+<span class="normal"><a href="#__codelineno-0-150">150</a></span>
+<span class="normal"><a href="#__codelineno-0-151">151</a></span>
+<span class="normal"><a href="#__codelineno-0-152">152</a></span>
+<span class="normal"><a href="#__codelineno-0-153">153</a></span>
+<span class="normal"><a href="#__codelineno-0-154">154</a></span>
+<span class="normal"><a href="#__codelineno-0-155">155</a></span>
+<span class="normal"><a href="#__codelineno-0-156">156</a></span>
+<span class="normal"><a href="#__codelineno-0-157">157</a></span>
+<span class="normal"><a href="#__codelineno-0-158">158</a></span>
+<span class="normal"><a href="#__codelineno-0-159">159</a></span>
+<span class="normal"><a href="#__codelineno-0-160">160</a></span>
+<span class="normal"><a href="#__codelineno-0-161">161</a></span>
+<span class="normal"><a href="#__codelineno-0-162">162</a></span>
+<span class="normal"><a href="#__codelineno-0-163">163</a></span>
+<span class="normal"><a href="#__codelineno-0-164">164</a></span>
+<span class="normal"><a href="#__codelineno-0-165">165</a></span>
+<span class="normal"><a href="#__codelineno-0-166">166</a></span>
+<span class="normal"><a href="#__codelineno-0-167">167</a></span>
+<span class="normal"><a href="#__codelineno-0-168">168</a></span>
+<span class="normal"><a href="#__codelineno-0-169">169</a></span>
+<span class="normal"><a href="#__codelineno-0-170">170</a></span>
+<span class="normal"><a href="#__codelineno-0-171">171</a></span>
+<span class="normal"><a href="#__codelineno-0-172">172</a></span>
+<span class="normal"><a href="#__codelineno-0-173">173</a></span>
+<span class="normal"><a href="#__codelineno-0-174">174</a></span>
+<span class="normal"><a href="#__codelineno-0-175">175</a></span>
+<span class="normal"><a href="#__codelineno-0-176">176</a></span>
+<span class="normal"><a href="#__codelineno-0-177">177</a></span>
+<span class="normal"><a href="#__codelineno-0-178">178</a></span>
+<span class="normal"><a href="#__codelineno-0-179">179</a></span>
+<span class="normal"><a href="#__codelineno-0-180">180</a></span>
+<span class="normal"><a href="#__codelineno-0-181">181</a></span>
+<span class="normal"><a href="#__codelineno-0-182">182</a></span>
+<span class="normal"><a href="#__codelineno-0-183">183</a></span>
+<span class="normal"><a href="#__codelineno-0-184">184</a></span>
+<span class="normal"><a href="#__codelineno-0-185">185</a></span>
+<span class="normal"><a href="#__codelineno-0-186">186</a></span>
+<span class="normal"><a href="#__codelineno-0-187">187</a></span>
+<span class="normal"><a href="#__codelineno-0-188">188</a></span>
+<span class="normal"><a href="#__codelineno-0-189">189</a></span>
+<span class="normal"><a href="#__codelineno-0-190">190</a></span>
+<span class="normal"><a href="#__codelineno-0-191">191</a></span>
+<span class="normal"><a href="#__codelineno-0-192">192</a></span>
+<span class="normal"><a href="#__codelineno-0-193">193</a></span>
+<span class="normal"><a href="#__codelineno-0-194">194</a></span>
+<span class="normal"><a href="#__codelineno-0-195">195</a></span>
+<span class="normal"><a href="#__codelineno-0-196">196</a></span>
+<span class="normal"><a href="#__codelineno-0-197">197</a></span>
+<span class="normal"><a href="#__codelineno-0-198">198</a></span>
+<span class="normal"><a href="#__codelineno-0-199">199</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-143" name="__codelineno-0-143"></a><span class="k">def</span> <span class="nf">clifford_batch_norm</span><span class="p">(</span>
+<a id="__codelineno-0-144" name="__codelineno-0-144"></a>    <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-0-145" name="__codelineno-0-145"></a>    <span class="n">n_blades</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-0-146" name="__codelineno-0-146"></a>    <span class="n">running_mean</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-147" name="__codelineno-0-147"></a>    <span class="n">running_cov</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-148" name="__codelineno-0-148"></a>    <span class="n">weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-149" name="__codelineno-0-149"></a>    <span class="n">bias</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-150" name="__codelineno-0-150"></a>    <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-151" name="__codelineno-0-151"></a>    <span class="n">momentum</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+<a id="__codelineno-0-152" name="__codelineno-0-152"></a>    <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-05</span><span class="p">,</span>
+<a id="__codelineno-0-153" name="__codelineno-0-153"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<a id="__codelineno-0-154" name="__codelineno-0-154"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Clifford batch normalization for each channel across a batch of data.</span>
+<a id="__codelineno-0-155" name="__codelineno-0-155"></a>
+<a id="__codelineno-0-156" name="__codelineno-0-156"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-157" name="__codelineno-0-157"></a><span class="sd">        x (torch.Tensor): Input tensor of shape `(B, C, *D, I)` where I is the blade of the algebra.</span>
+<a id="__codelineno-0-158" name="__codelineno-0-158"></a><span class="sd">        n_blades (int): Number of blades of the Clifford algebra.</span>
+<a id="__codelineno-0-159" name="__codelineno-0-159"></a><span class="sd">        running_mean (torch.Tensor, optional): The tensor with running mean statistics having shape `(I, C)`.</span>
+<a id="__codelineno-0-160" name="__codelineno-0-160"></a><span class="sd">        running_cov (torch.Tensor, optional): The tensor with running covariance statistics having shape `(I, I, C)`.</span>
+<a id="__codelineno-0-161" name="__codelineno-0-161"></a><span class="sd">        weight (Union[torch.Tensor, nn.Parameter], optional): Additional weight tensor which is applied post normalization, and has the shape `(I, I, C)`.</span>
+<a id="__codelineno-0-162" name="__codelineno-0-162"></a><span class="sd">        bias (Union[torch.Tensor, nn.Parameter], optional): Additional bias tensor which is applied post normalization, and has the shape `(I, C)`.</span>
+<a id="__codelineno-0-163" name="__codelineno-0-163"></a><span class="sd">        training (bool, optional): Whether to use the running mean and variance. Defaults to True. Defaults to True.</span>
+<a id="__codelineno-0-164" name="__codelineno-0-164"></a><span class="sd">        momentum (float, optional): Momentum for the running mean and variance. Defaults to 0.1.</span>
+<a id="__codelineno-0-165" name="__codelineno-0-165"></a><span class="sd">        eps (float, optional): Epsilon for the running mean and variance. Defaults to 1e-05.</span>
+<a id="__codelineno-0-166" name="__codelineno-0-166"></a>
+<a id="__codelineno-0-167" name="__codelineno-0-167"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-168" name="__codelineno-0-168"></a><span class="sd">        (torch.Tensor): Normalized input of shape `(B, C, *D, I)`</span>
+<a id="__codelineno-0-169" name="__codelineno-0-169"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-170" name="__codelineno-0-170"></a>
+<a id="__codelineno-0-171" name="__codelineno-0-171"></a>    <span class="c1"># Check arguments.</span>
+<a id="__codelineno-0-172" name="__codelineno-0-172"></a>    <span class="k">assert</span> <span class="p">(</span><span class="n">running_mean</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">running_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-0-173" name="__codelineno-0-173"></a>    <span class="k">assert</span> <span class="p">(</span><span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-0-174" name="__codelineno-0-174"></a>
+<a id="__codelineno-0-175" name="__codelineno-0-175"></a>    <span class="c1"># Whiten and apply affine transformation</span>
+<a id="__codelineno-0-176" name="__codelineno-0-176"></a>    <span class="n">_</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-0-177" name="__codelineno-0-177"></a>    <span class="k">assert</span> <span class="n">I</span> <span class="o">==</span> <span class="n">n_blades</span>
+<a id="__codelineno-0-178" name="__codelineno-0-178"></a>    <span class="n">x_norm</span> <span class="o">=</span> <span class="n">whiten_data</span><span class="p">(</span>
+<a id="__codelineno-0-179" name="__codelineno-0-179"></a>        <span class="n">x</span><span class="p">,</span>
+<a id="__codelineno-0-180" name="__codelineno-0-180"></a>        <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">,</span>
+<a id="__codelineno-0-181" name="__codelineno-0-181"></a>        <span class="n">running_mean</span><span class="o">=</span><span class="n">running_mean</span><span class="p">,</span>
+<a id="__codelineno-0-182" name="__codelineno-0-182"></a>        <span class="n">running_cov</span><span class="o">=</span><span class="n">running_cov</span><span class="p">,</span>
+<a id="__codelineno-0-183" name="__codelineno-0-183"></a>        <span class="n">momentum</span><span class="o">=</span><span class="n">momentum</span><span class="p">,</span>
+<a id="__codelineno-0-184" name="__codelineno-0-184"></a>        <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span>
+<a id="__codelineno-0-185" name="__codelineno-0-185"></a>    <span class="p">)</span>
+<a id="__codelineno-0-186" name="__codelineno-0-186"></a>    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-187" name="__codelineno-0-187"></a>        <span class="c1"># Check if weight and bias tensors are of correct shape.</span>
+<a id="__codelineno-0-188" name="__codelineno-0-188"></a>        <span class="k">assert</span> <span class="n">weight</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<a id="__codelineno-0-189" name="__codelineno-0-189"></a>        <span class="k">assert</span> <span class="n">bias</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<a id="__codelineno-0-190" name="__codelineno-0-190"></a>        <span class="c1"># Unsqueeze weight and bias for each dimension except the channel dimension.</span>
+<a id="__codelineno-0-191" name="__codelineno-0-191"></a>        <span class="n">shape</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">-</span> <span class="mi">3</span><span class="p">))</span>
+<a id="__codelineno-0-192" name="__codelineno-0-192"></a>        <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="o">*</span><span class="n">shape</span><span class="p">)</span>
+<a id="__codelineno-0-193" name="__codelineno-0-193"></a>        <span class="c1"># Apply additional affine transformation post normalization.</span>
+<a id="__codelineno-0-194" name="__codelineno-0-194"></a>        <span class="n">weight_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">dim</span><span class="p">()))</span>
+<a id="__codelineno-0-195" name="__codelineno-0-195"></a>        <span class="c1"># TODO: weight multiplication should be changed to geometric product.</span>
+<a id="__codelineno-0-196" name="__codelineno-0-196"></a>        <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="o">*</span><span class="n">weight_idx</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="o">*</span><span class="n">weight_idx</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<a id="__codelineno-0-197" name="__codelineno-0-197"></a>        <span class="n">x_norm</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x_norm</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">bias</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+<a id="__codelineno-0-198" name="__codelineno-0-198"></a>
+<a id="__codelineno-0-199" name="__codelineno-0-199"></a>    <span class="k">return</span> <span class="n">x_norm</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="cliffordlayers.nn.functional.batchnorm.complex_batch_norm" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">complex_batch_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">running_mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">running_cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">)</span></code>
+
+<a href="#cliffordlayers.nn.functional.batchnorm.complex_batch_norm" class="headerlink" title="Permanent link">¤</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Applies complex-valued Batch Normalization as described in
+(Trabelsi et al., 2018) for each channel across a batch of data.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The input complex-valued data is expected to be at least 2d, with shape <code>(B, C, *D)</code>, where <code>B</code> is the batch dimension, <code>C</code> the channels/features, and *D the remaining dimensions (if present).</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_mean</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a>, <span title="torch.Parameter">Parameter</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tensor with running mean statistics having shape <code>(2, C)</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_cov</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a>, <span title="torch.Parameter">Parameter</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tensor with running real-imaginary covariance statistics having shape <code>(2, 2, C)</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>weight</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Additional weight tensor which is applied post normalization, and has the shape <code>(2, 2, C)</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>bias</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Additional bias tensor which is applied post normalization, and has the shape <code>(2, C)</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>training</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to use the running mean and variance. Defaults to <code>True</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>momentum</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Momentum for the running mean and variance. Defaults to <code>0.1</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>0.1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>eps</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Epsilon for the running mean and variance. Defaults to <code>1e-05</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>1e-05</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Normalized input as complex tensor of shape <code>(B, C, *D)</code>.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>cliffordlayers/nn/functional/batchnorm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-0-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-0-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-0-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-0-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span>
+<span class="normal"><a href="#__codelineno-0-101">101</a></span>
+<span class="normal"><a href="#__codelineno-0-102">102</a></span>
+<span class="normal"><a href="#__codelineno-0-103">103</a></span>
+<span class="normal"><a href="#__codelineno-0-104">104</a></span>
+<span class="normal"><a href="#__codelineno-0-105">105</a></span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span>
+<span class="normal"><a href="#__codelineno-0-108">108</a></span>
+<span class="normal"><a href="#__codelineno-0-109">109</a></span>
+<span class="normal"><a href="#__codelineno-0-110">110</a></span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span>
+<span class="normal"><a href="#__codelineno-0-112">112</a></span>
+<span class="normal"><a href="#__codelineno-0-113">113</a></span>
+<span class="normal"><a href="#__codelineno-0-114">114</a></span>
+<span class="normal"><a href="#__codelineno-0-115">115</a></span>
+<span class="normal"><a href="#__codelineno-0-116">116</a></span>
+<span class="normal"><a href="#__codelineno-0-117">117</a></span>
+<span class="normal"><a href="#__codelineno-0-118">118</a></span>
+<span class="normal"><a href="#__codelineno-0-119">119</a></span>
+<span class="normal"><a href="#__codelineno-0-120">120</a></span>
+<span class="normal"><a href="#__codelineno-0-121">121</a></span>
+<span class="normal"><a href="#__codelineno-0-122">122</a></span>
+<span class="normal"><a href="#__codelineno-0-123">123</a></span>
+<span class="normal"><a href="#__codelineno-0-124">124</a></span>
+<span class="normal"><a href="#__codelineno-0-125">125</a></span>
+<span class="normal"><a href="#__codelineno-0-126">126</a></span>
+<span class="normal"><a href="#__codelineno-0-127">127</a></span>
+<span class="normal"><a href="#__codelineno-0-128">128</a></span>
+<span class="normal"><a href="#__codelineno-0-129">129</a></span>
+<span class="normal"><a href="#__codelineno-0-130">130</a></span>
+<span class="normal"><a href="#__codelineno-0-131">131</a></span>
+<span class="normal"><a href="#__codelineno-0-132">132</a></span>
+<span class="normal"><a href="#__codelineno-0-133">133</a></span>
+<span class="normal"><a href="#__codelineno-0-134">134</a></span>
+<span class="normal"><a href="#__codelineno-0-135">135</a></span>
+<span class="normal"><a href="#__codelineno-0-136">136</a></span>
+<span class="normal"><a href="#__codelineno-0-137">137</a></span>
+<span class="normal"><a href="#__codelineno-0-138">138</a></span>
+<span class="normal"><a href="#__codelineno-0-139">139</a></span>
+<span class="normal"><a href="#__codelineno-0-140">140</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="k">def</span> <span class="nf">complex_batch_norm</span><span class="p">(</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a>    <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>    <span class="n">running_mean</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a>    <span class="n">running_cov</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a>    <span class="n">weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a>    <span class="n">bias</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a>    <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>    <span class="n">momentum</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>    <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-05</span><span class="p">,</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies complex-valued Batch Normalization as described in</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="sd">    (Trabelsi et al., 2018) for each channel across a batch of data.</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="sd">        x (torch.Tensor): The input complex-valued data is expected to be at least 2d, with shape `(B, C, *D)`, where `B` is the batch dimension, `C` the channels/features, and *D the remaining dimensions (if present).</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="sd">        running_mean (Union[torch.Tensor, nn.Parameter], optional): The tensor with running mean statistics having shape `(2, C)`.</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="sd">        running_cov (Union[torch.Tensor, nn.Parameter], optional): The tensor with running real-imaginary covariance statistics having shape `(2, 2, C)`.</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="sd">        weight (torch.Tensor, optional): Additional weight tensor which is applied post normalization, and has the shape `(2, 2, C)`.</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="sd">        bias (torch.Tensor, optional): Additional bias tensor which is applied post normalization, and has the shape `(2, C)`.</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">        training (bool, optional): Whether to use the running mean and variance. Defaults to `True`.</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="sd">        momentum (float, optional): Momentum for the running mean and variance. Defaults to `0.1`.</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">        eps (float, optional): Epsilon for the running mean and variance. Defaults to `1e-05`.</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="sd">        (torch.Tensor): Normalized input as complex tensor of shape `(B, C, *D)`.</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a>    <span class="c1"># Check arguments.</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a>    <span class="k">assert</span> <span class="p">(</span><span class="n">running_mean</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">running_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a>    <span class="k">assert</span> <span class="p">(</span><span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">view_as_real</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a>    <span class="n">_</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a>    <span class="k">assert</span> <span class="n">I</span> <span class="o">==</span> <span class="mi">2</span>
+<a id="__codelineno-0-117" name="__codelineno-0-117"></a>
+<a id="__codelineno-0-118" name="__codelineno-0-118"></a>    <span class="c1"># Whiten and apply affine transformation.</span>
+<a id="__codelineno-0-119" name="__codelineno-0-119"></a>    <span class="n">x_norm</span> <span class="o">=</span> <span class="n">whiten_data</span><span class="p">(</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a>        <span class="n">x</span><span class="p">,</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>        <span class="n">training</span><span class="p">,</span>
+<a id="__codelineno-0-122" name="__codelineno-0-122"></a>        <span class="n">running_mean</span><span class="p">,</span>
+<a id="__codelineno-0-123" name="__codelineno-0-123"></a>        <span class="n">running_cov</span><span class="p">,</span>
+<a id="__codelineno-0-124" name="__codelineno-0-124"></a>        <span class="n">momentum</span><span class="p">,</span>
+<a id="__codelineno-0-125" name="__codelineno-0-125"></a>        <span class="n">eps</span><span class="p">,</span>
+<a id="__codelineno-0-126" name="__codelineno-0-126"></a>    <span class="p">)</span>
+<a id="__codelineno-0-127" name="__codelineno-0-127"></a>    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-128" name="__codelineno-0-128"></a>        <span class="c1"># Check if weight and bias tensors are of correct shape.</span>
+<a id="__codelineno-0-129" name="__codelineno-0-129"></a>        <span class="k">assert</span> <span class="n">weight</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<a id="__codelineno-0-130" name="__codelineno-0-130"></a>        <span class="k">assert</span> <span class="n">bias</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<a id="__codelineno-0-131" name="__codelineno-0-131"></a>        <span class="c1"># Unsqueeze weight and bias for each dimension except the channel dimension.</span>
+<a id="__codelineno-0-132" name="__codelineno-0-132"></a>        <span class="n">shape</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">-</span> <span class="mi">3</span><span class="p">))</span>
+<a id="__codelineno-0-133" name="__codelineno-0-133"></a>        <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">*</span><span class="n">shape</span><span class="p">)</span>
+<a id="__codelineno-0-134" name="__codelineno-0-134"></a>        <span class="c1"># Apply additional affine transformation post normalization.</span>
+<a id="__codelineno-0-135" name="__codelineno-0-135"></a>        <span class="n">weight_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">dim</span><span class="p">()))</span>
+<a id="__codelineno-0-136" name="__codelineno-0-136"></a>        <span class="c1"># TODO weight multiplication should be changed to complex product.</span>
+<a id="__codelineno-0-137" name="__codelineno-0-137"></a>        <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="o">*</span><span class="n">weight_idx</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="o">*</span><span class="n">weight_idx</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+<a id="__codelineno-0-138" name="__codelineno-0-138"></a>        <span class="n">x_norm</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x_norm</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">bias</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-0-139" name="__codelineno-0-139"></a>
+<a id="__codelineno-0-140" name="__codelineno-0-140"></a>    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">view_as_complex</span><span class="p">(</span><span class="n">x_norm</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="cliffordlayers.nn.functional.batchnorm.whiten_data" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">whiten_data</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">running_mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">running_cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">)</span></code>
+
+<a href="#cliffordlayers.nn.functional.batchnorm.whiten_data" class="headerlink" title="Permanent link">¤</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Jointly whiten features in tensors <code>(B, C, *D, I)</code>: take n_blades(I)-dim vectors
+and whiten individually for each channel dimension C over <code>(B, *D)</code>.
+I is the number of blades in the respective Clifford algebra, e.g. I = 2 for complex numbers.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tensor to whiten.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>training</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Wheter to update the running mean and covariance. Defaults to <code>True</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_mean</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The running mean of shape <code>(I, C). Defaults to</code>None`.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_cov</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The running covariance of shape <code>(I, I, C)</code> Defaults to <code>None</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>momentum</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The momentum to use for the running mean and covariance. Defaults to <code>0.1</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>0.1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>eps</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A small number to add to the covariance. Defaults to 1e-5.</p>
+            </div>
+          </td>
+          <td>
+                <code>1e-05</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whitened data of shape <code>(B, C, *D, I)</code>.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>cliffordlayers/nn/functional/batchnorm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#__codelineno-0-40">40</a></span>
+<span class="normal"><a href="#__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#__codelineno-0-46">46</a></span>
+<span class="normal"><a href="#__codelineno-0-47">47</a></span>
+<span class="normal"><a href="#__codelineno-0-48">48</a></span>
+<span class="normal"><a href="#__codelineno-0-49">49</a></span>
+<span class="normal"><a href="#__codelineno-0-50">50</a></span>
+<span class="normal"><a href="#__codelineno-0-51">51</a></span>
+<span class="normal"><a href="#__codelineno-0-52">52</a></span>
+<span class="normal"><a href="#__codelineno-0-53">53</a></span>
+<span class="normal"><a href="#__codelineno-0-54">54</a></span>
+<span class="normal"><a href="#__codelineno-0-55">55</a></span>
+<span class="normal"><a href="#__codelineno-0-56">56</a></span>
+<span class="normal"><a href="#__codelineno-0-57">57</a></span>
+<span class="normal"><a href="#__codelineno-0-58">58</a></span>
+<span class="normal"><a href="#__codelineno-0-59">59</a></span>
+<span class="normal"><a href="#__codelineno-0-60">60</a></span>
+<span class="normal"><a href="#__codelineno-0-61">61</a></span>
+<span class="normal"><a href="#__codelineno-0-62">62</a></span>
+<span class="normal"><a href="#__codelineno-0-63">63</a></span>
+<span class="normal"><a href="#__codelineno-0-64">64</a></span>
+<span class="normal"><a href="#__codelineno-0-65">65</a></span>
+<span class="normal"><a href="#__codelineno-0-66">66</a></span>
+<span class="normal"><a href="#__codelineno-0-67">67</a></span>
+<span class="normal"><a href="#__codelineno-0-68">68</a></span>
+<span class="normal"><a href="#__codelineno-0-69">69</a></span>
+<span class="normal"><a href="#__codelineno-0-70">70</a></span>
+<span class="normal"><a href="#__codelineno-0-71">71</a></span>
+<span class="normal"><a href="#__codelineno-0-72">72</a></span>
+<span class="normal"><a href="#__codelineno-0-73">73</a></span>
+<span class="normal"><a href="#__codelineno-0-74">74</a></span>
+<span class="normal"><a href="#__codelineno-0-75">75</a></span>
+<span class="normal"><a href="#__codelineno-0-76">76</a></span>
+<span class="normal"><a href="#__codelineno-0-77">77</a></span>
+<span class="normal"><a href="#__codelineno-0-78">78</a></span>
+<span class="normal"><a href="#__codelineno-0-79">79</a></span>
+<span class="normal"><a href="#__codelineno-0-80">80</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">def</span> <span class="nf">whiten_data</span><span class="p">(</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="n">running_mean</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="n">running_cov</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="n">momentum</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Jointly whiten features in tensors `(B, C, *D, I)`: take n_blades(I)-dim vectors</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">    and whiten individually for each channel dimension C over `(B, *D)`.</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">    I is the number of blades in the respective Clifford algebra, e.g. I = 2 for complex numbers.</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        x (torch.Tensor): The tensor to whiten.</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">        training (bool, optional): Wheter to update the running mean and covariance. Defaults to `True`.</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">        running_mean (torch.Tensor, optional): The running mean of shape `(I, C). Defaults to `None`.</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">        running_cov (torch.Tensor, optional): The running covariance of shape `(I, I, C)` Defaults to `None`.</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">        momentum (float, optional): The momentum to use for the running mean and covariance. Defaults to `0.1`.</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        eps (float, optional): A small number to add to the covariance. Defaults to 1e-5.</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">        (torch.Tensor): Whitened data of shape `(B, C, *D, I)`.</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>    <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>    <span class="c1"># Get whitening shape of [1, C, ...]</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>    <span class="n">_</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>    <span class="n">B_dim</span><span class="p">,</span> <span class="n">C_dim</span><span class="p">,</span> <span class="o">*</span><span class="n">D_dims</span><span class="p">,</span> <span class="n">I_dim</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>    <span class="n">shape</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">-</span> <span class="mi">3</span><span class="p">))</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a>    <span class="c1"># Get feature mean.</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">running_mean</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">running_mean</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">C</span><span class="p">)):</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running_mean expected to be none, or of shape (</span><span class="si">{</span><span class="n">I</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">C</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>    <span class="k">if</span> <span class="n">training</span> <span class="ow">or</span> <span class="n">running_mean</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>        <span class="n">mean</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="n">B_dim</span><span class="p">,</span> <span class="o">*</span><span class="n">D_dims</span><span class="p">))</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>        <span class="k">if</span> <span class="n">running_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>            <span class="n">running_mean</span> <span class="o">+=</span> <span class="n">momentum</span> <span class="o">*</span> <span class="p">(</span><span class="n">mean</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">running_mean</span><span class="p">)</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>        <span class="n">mean</span> <span class="o">=</span> <span class="n">running_mean</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>    <span class="c1"># Get feature covariance.</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">running_cov</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">running_cov</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">C</span><span class="p">)):</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running_cov expected to be none, or of shape (</span><span class="si">{</span><span class="n">I</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">I</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">C</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="k">if</span> <span class="n">training</span> <span class="ow">or</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>        <span class="c1"># B, C, *D, I -&gt; C, I, B, *D</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>        <span class="n">X</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">C_dim</span><span class="p">,</span> <span class="n">I_dim</span><span class="p">,</span> <span class="n">B_dim</span><span class="p">,</span> <span class="o">*</span><span class="n">D_dims</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>        <span class="c1"># Covariance XX^T matrix of shape C x I x I</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>        <span class="n">cov</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>        <span class="k">if</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>            <span class="n">running_cov</span> <span class="o">+=</span> <span class="n">momentum</span> <span class="o">*</span> <span class="p">(</span><span class="n">cov</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">running_cov</span><span class="p">)</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="n">cov</span> <span class="o">=</span> <span class="n">running_cov</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>    <span class="c1"># Upper triangle Cholesky decomposition of covariance matrix: U^T U = Cov</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>    <span class="c1"># eye = eps * torch.eye(I, device=cov.device, dtype=cov.dtype).unsqueeze(0)</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>    <span class="c1"># Modified the scale of eps to help prevent the occurence of negative-definite matrices</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>    <span class="c1"># 1e-5 may not fit the scale of matrices with large numbers</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>    <span class="n">max_values</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">cov</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>    <span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">cov</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">cov</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">cov</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>    <span class="n">eye</span> <span class="o">=</span> <span class="n">eps</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ij,k-&gt;kij&#39;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">max_values</span><span class="p">)</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>    <span class="n">U</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">cov</span> <span class="o">+</span> <span class="n">eye</span><span class="p">)</span><span class="o">.</span><span class="n">mH</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>    <span class="c1"># Invert Cholesky decomposition, returns tensor of shape [B, C, *D, I]</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>    <span class="n">x_whiten</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve_triangular</span><span class="p">(</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>        <span class="n">U</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">),</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>        <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>        <span class="n">upper</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>    <span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>    <span class="k">return</span> <span class="n">x_whiten</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="cliffordlayers.nn.functional.groupnorm"></a>
+  <div class="doc doc-contents first">
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="cliffordlayers.nn.functional.groupnorm.clifford_group_norm" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">clifford_group_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n_blades</span><span class="p">,</span> <span class="n">num_groups</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">running_mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">running_cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">)</span></code>
+
+<a href="#cliffordlayers.nn.functional.groupnorm.clifford_group_norm" class="headerlink" title="Permanent link">¤</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Clifford group normalization</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Input tensor of shape <code>(B, C, *D, I)</code> where I is the blade of the algebra.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>n_blades</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Number of blades of the Clifford algebra.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>num_groups</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Number of groups for which normalization is calculated. Defaults to 1.
+              For <code>num_groups == 1</code>, it effectively applies Clifford layer normalization, for <code>num_groups == C</code>, it effectively applies Clifford instance normalization.</p>
+            </div>
+          </td>
+          <td>
+                <code>1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_mean</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tensor with running mean statistics having shape <code>(I, C / num_groups)</code>. Defaults to None.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_cov</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tensor with running real-imaginary covariance statistics having shape <code>(I, I, C / num_groups)</code>. Defaults to None.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>weight</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a>, <span title="torch.Parameter">Parameter</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Additional weight tensor which is applied post normalization, and has the shape <code>(I, I, C / num_groups)</code>. Defaults to None.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>bias</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a>, <span title="torch.Parameter">Parameter</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Additional bias tensor which is applied post normalization, and has the shape <code>(I, C / num_groups)</code>. Defaults to None.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>training</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to use the running mean and variance. Defaults to True.</p>
+            </div>
+          </td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>momentum</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Momentum for the running mean and variance. Defaults to 0.1.</p>
+            </div>
+          </td>
+          <td>
+                <code>0.1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>eps</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Epsilon for the running mean and variance. Defaults to 1e-05.</p>
+            </div>
+          </td>
+          <td>
+                <code>1e-05</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Group normalized input of shape <code>(B, C, *D, I)</code>.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>cliffordlayers/nn/functional/groupnorm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-119">119</a></span>
+<span class="normal"><a href="#__codelineno-0-120">120</a></span>
+<span class="normal"><a href="#__codelineno-0-121">121</a></span>
+<span class="normal"><a href="#__codelineno-0-122">122</a></span>
+<span class="normal"><a href="#__codelineno-0-123">123</a></span>
+<span class="normal"><a href="#__codelineno-0-124">124</a></span>
+<span class="normal"><a href="#__codelineno-0-125">125</a></span>
+<span class="normal"><a href="#__codelineno-0-126">126</a></span>
+<span class="normal"><a href="#__codelineno-0-127">127</a></span>
+<span class="normal"><a href="#__codelineno-0-128">128</a></span>
+<span class="normal"><a href="#__codelineno-0-129">129</a></span>
+<span class="normal"><a href="#__codelineno-0-130">130</a></span>
+<span class="normal"><a href="#__codelineno-0-131">131</a></span>
+<span class="normal"><a href="#__codelineno-0-132">132</a></span>
+<span class="normal"><a href="#__codelineno-0-133">133</a></span>
+<span class="normal"><a href="#__codelineno-0-134">134</a></span>
+<span class="normal"><a href="#__codelineno-0-135">135</a></span>
+<span class="normal"><a href="#__codelineno-0-136">136</a></span>
+<span class="normal"><a href="#__codelineno-0-137">137</a></span>
+<span class="normal"><a href="#__codelineno-0-138">138</a></span>
+<span class="normal"><a href="#__codelineno-0-139">139</a></span>
+<span class="normal"><a href="#__codelineno-0-140">140</a></span>
+<span class="normal"><a href="#__codelineno-0-141">141</a></span>
+<span class="normal"><a href="#__codelineno-0-142">142</a></span>
+<span class="normal"><a href="#__codelineno-0-143">143</a></span>
+<span class="normal"><a href="#__codelineno-0-144">144</a></span>
+<span class="normal"><a href="#__codelineno-0-145">145</a></span>
+<span class="normal"><a href="#__codelineno-0-146">146</a></span>
+<span class="normal"><a href="#__codelineno-0-147">147</a></span>
+<span class="normal"><a href="#__codelineno-0-148">148</a></span>
+<span class="normal"><a href="#__codelineno-0-149">149</a></span>
+<span class="normal"><a href="#__codelineno-0-150">150</a></span>
+<span class="normal"><a href="#__codelineno-0-151">151</a></span>
+<span class="normal"><a href="#__codelineno-0-152">152</a></span>
+<span class="normal"><a href="#__codelineno-0-153">153</a></span>
+<span class="normal"><a href="#__codelineno-0-154">154</a></span>
+<span class="normal"><a href="#__codelineno-0-155">155</a></span>
+<span class="normal"><a href="#__codelineno-0-156">156</a></span>
+<span class="normal"><a href="#__codelineno-0-157">157</a></span>
+<span class="normal"><a href="#__codelineno-0-158">158</a></span>
+<span class="normal"><a href="#__codelineno-0-159">159</a></span>
+<span class="normal"><a href="#__codelineno-0-160">160</a></span>
+<span class="normal"><a href="#__codelineno-0-161">161</a></span>
+<span class="normal"><a href="#__codelineno-0-162">162</a></span>
+<span class="normal"><a href="#__codelineno-0-163">163</a></span>
+<span class="normal"><a href="#__codelineno-0-164">164</a></span>
+<span class="normal"><a href="#__codelineno-0-165">165</a></span>
+<span class="normal"><a href="#__codelineno-0-166">166</a></span>
+<span class="normal"><a href="#__codelineno-0-167">167</a></span>
+<span class="normal"><a href="#__codelineno-0-168">168</a></span>
+<span class="normal"><a href="#__codelineno-0-169">169</a></span>
+<span class="normal"><a href="#__codelineno-0-170">170</a></span>
+<span class="normal"><a href="#__codelineno-0-171">171</a></span>
+<span class="normal"><a href="#__codelineno-0-172">172</a></span>
+<span class="normal"><a href="#__codelineno-0-173">173</a></span>
+<span class="normal"><a href="#__codelineno-0-174">174</a></span>
+<span class="normal"><a href="#__codelineno-0-175">175</a></span>
+<span class="normal"><a href="#__codelineno-0-176">176</a></span>
+<span class="normal"><a href="#__codelineno-0-177">177</a></span>
+<span class="normal"><a href="#__codelineno-0-178">178</a></span>
+<span class="normal"><a href="#__codelineno-0-179">179</a></span>
+<span class="normal"><a href="#__codelineno-0-180">180</a></span>
+<span class="normal"><a href="#__codelineno-0-181">181</a></span>
+<span class="normal"><a href="#__codelineno-0-182">182</a></span>
+<span class="normal"><a href="#__codelineno-0-183">183</a></span>
+<span class="normal"><a href="#__codelineno-0-184">184</a></span>
+<span class="normal"><a href="#__codelineno-0-185">185</a></span>
+<span class="normal"><a href="#__codelineno-0-186">186</a></span>
+<span class="normal"><a href="#__codelineno-0-187">187</a></span>
+<span class="normal"><a href="#__codelineno-0-188">188</a></span>
+<span class="normal"><a href="#__codelineno-0-189">189</a></span>
+<span class="normal"><a href="#__codelineno-0-190">190</a></span>
+<span class="normal"><a href="#__codelineno-0-191">191</a></span>
+<span class="normal"><a href="#__codelineno-0-192">192</a></span>
+<span class="normal"><a href="#__codelineno-0-193">193</a></span>
+<span class="normal"><a href="#__codelineno-0-194">194</a></span>
+<span class="normal"><a href="#__codelineno-0-195">195</a></span>
+<span class="normal"><a href="#__codelineno-0-196">196</a></span>
+<span class="normal"><a href="#__codelineno-0-197">197</a></span>
+<span class="normal"><a href="#__codelineno-0-198">198</a></span>
+<span class="normal"><a href="#__codelineno-0-199">199</a></span>
+<span class="normal"><a href="#__codelineno-0-200">200</a></span>
+<span class="normal"><a href="#__codelineno-0-201">201</a></span>
+<span class="normal"><a href="#__codelineno-0-202">202</a></span>
+<span class="normal"><a href="#__codelineno-0-203">203</a></span>
+<span class="normal"><a href="#__codelineno-0-204">204</a></span>
+<span class="normal"><a href="#__codelineno-0-205">205</a></span>
+<span class="normal"><a href="#__codelineno-0-206">206</a></span>
+<span class="normal"><a href="#__codelineno-0-207">207</a></span>
+<span class="normal"><a href="#__codelineno-0-208">208</a></span>
+<span class="normal"><a href="#__codelineno-0-209">209</a></span>
+<span class="normal"><a href="#__codelineno-0-210">210</a></span>
+<span class="normal"><a href="#__codelineno-0-211">211</a></span>
+<span class="normal"><a href="#__codelineno-0-212">212</a></span>
+<span class="normal"><a href="#__codelineno-0-213">213</a></span>
+<span class="normal"><a href="#__codelineno-0-214">214</a></span>
+<span class="normal"><a href="#__codelineno-0-215">215</a></span>
+<span class="normal"><a href="#__codelineno-0-216">216</a></span>
+<span class="normal"><a href="#__codelineno-0-217">217</a></span>
+<span class="normal"><a href="#__codelineno-0-218">218</a></span>
+<span class="normal"><a href="#__codelineno-0-219">219</a></span>
+<span class="normal"><a href="#__codelineno-0-220">220</a></span>
+<span class="normal"><a href="#__codelineno-0-221">221</a></span>
+<span class="normal"><a href="#__codelineno-0-222">222</a></span>
+<span class="normal"><a href="#__codelineno-0-223">223</a></span>
+<span class="normal"><a href="#__codelineno-0-224">224</a></span>
+<span class="normal"><a href="#__codelineno-0-225">225</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-119" name="__codelineno-0-119"></a><span class="k">def</span> <span class="nf">clifford_group_norm</span><span class="p">(</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a>    <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>    <span class="n">n_blades</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-0-122" name="__codelineno-0-122"></a>    <span class="n">num_groups</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-0-123" name="__codelineno-0-123"></a>    <span class="n">running_mean</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-124" name="__codelineno-0-124"></a>    <span class="n">running_cov</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-125" name="__codelineno-0-125"></a>    <span class="n">weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-126" name="__codelineno-0-126"></a>    <span class="n">bias</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-127" name="__codelineno-0-127"></a>    <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-128" name="__codelineno-0-128"></a>    <span class="n">momentum</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+<a id="__codelineno-0-129" name="__codelineno-0-129"></a>    <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-05</span><span class="p">,</span>
+<a id="__codelineno-0-130" name="__codelineno-0-130"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+<a id="__codelineno-0-131" name="__codelineno-0-131"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Clifford group normalization</span>
+<a id="__codelineno-0-132" name="__codelineno-0-132"></a>
+<a id="__codelineno-0-133" name="__codelineno-0-133"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-134" name="__codelineno-0-134"></a><span class="sd">        x (torch.Tensor): Input tensor of shape `(B, C, *D, I)` where I is the blade of the algebra.</span>
+<a id="__codelineno-0-135" name="__codelineno-0-135"></a>
+<a id="__codelineno-0-136" name="__codelineno-0-136"></a><span class="sd">        n_blades (int): Number of blades of the Clifford algebra.</span>
+<a id="__codelineno-0-137" name="__codelineno-0-137"></a>
+<a id="__codelineno-0-138" name="__codelineno-0-138"></a><span class="sd">        num_groups (int): Number of groups for which normalization is calculated. Defaults to 1.</span>
+<a id="__codelineno-0-139" name="__codelineno-0-139"></a><span class="sd">                          For `num_groups == 1`, it effectively applies Clifford layer normalization, for `num_groups == C`, it effectively applies Clifford instance normalization.</span>
+<a id="__codelineno-0-140" name="__codelineno-0-140"></a>
+<a id="__codelineno-0-141" name="__codelineno-0-141"></a><span class="sd">        running_mean (torch.Tensor, optional): The tensor with running mean statistics having shape `(I, C / num_groups)`. Defaults to None.</span>
+<a id="__codelineno-0-142" name="__codelineno-0-142"></a><span class="sd">        running_cov (torch.Tensor, optional): The tensor with running real-imaginary covariance statistics having shape `(I, I, C / num_groups)`. Defaults to None.</span>
+<a id="__codelineno-0-143" name="__codelineno-0-143"></a>
+<a id="__codelineno-0-144" name="__codelineno-0-144"></a><span class="sd">        weight (Union[torch.Tensor, nn.Parameter], optional): Additional weight tensor which is applied post normalization, and has the shape `(I, I, C / num_groups)`. Defaults to None.</span>
+<a id="__codelineno-0-145" name="__codelineno-0-145"></a>
+<a id="__codelineno-0-146" name="__codelineno-0-146"></a><span class="sd">        bias (Union[torch.Tensor, nn.Parameter], optional): Additional bias tensor which is applied post normalization, and has the shape `(I, C / num_groups)`. Defaults to None.</span>
+<a id="__codelineno-0-147" name="__codelineno-0-147"></a>
+<a id="__codelineno-0-148" name="__codelineno-0-148"></a><span class="sd">        training (bool, optional): Whether to use the running mean and variance. Defaults to True.</span>
+<a id="__codelineno-0-149" name="__codelineno-0-149"></a><span class="sd">        momentum (float, optional): Momentum for the running mean and variance. Defaults to 0.1.</span>
+<a id="__codelineno-0-150" name="__codelineno-0-150"></a><span class="sd">        eps (float, optional): Epsilon for the running mean and variance. Defaults to 1e-05.</span>
+<a id="__codelineno-0-151" name="__codelineno-0-151"></a>
+<a id="__codelineno-0-152" name="__codelineno-0-152"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-153" name="__codelineno-0-153"></a><span class="sd">        (torch.Tensor): Group normalized input of shape `(B, C, *D, I)`.</span>
+<a id="__codelineno-0-154" name="__codelineno-0-154"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-155" name="__codelineno-0-155"></a>
+<a id="__codelineno-0-156" name="__codelineno-0-156"></a>    <span class="c1"># Check arguments.</span>
+<a id="__codelineno-0-157" name="__codelineno-0-157"></a>    <span class="k">assert</span> <span class="p">(</span><span class="n">running_mean</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">running_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-0-158" name="__codelineno-0-158"></a>    <span class="k">assert</span> <span class="p">(</span><span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-0-159" name="__codelineno-0-159"></a>
+<a id="__codelineno-0-160" name="__codelineno-0-160"></a>    <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">D</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-0-161" name="__codelineno-0-161"></a>    <span class="k">assert</span> <span class="n">num_groups</span> <span class="o">&lt;=</span> <span class="n">C</span>
+<a id="__codelineno-0-162" name="__codelineno-0-162"></a>    <span class="k">assert</span> <span class="n">C</span> <span class="o">%</span> <span class="n">num_groups</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Number of channels should be evenly divisible by the number of groups.&quot;</span>
+<a id="__codelineno-0-163" name="__codelineno-0-163"></a>    <span class="k">assert</span> <span class="n">I</span> <span class="o">==</span> <span class="n">n_blades</span>
+<a id="__codelineno-0-164" name="__codelineno-0-164"></a>    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-165" name="__codelineno-0-165"></a>        <span class="c1"># Check if weight and bias tensors are of correct shape.</span>
+<a id="__codelineno-0-166" name="__codelineno-0-166"></a>        <span class="k">assert</span> <span class="n">weight</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span>
+<a id="__codelineno-0-167" name="__codelineno-0-167"></a>        <span class="k">assert</span> <span class="n">bias</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span>
+<a id="__codelineno-0-168" name="__codelineno-0-168"></a>        <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<a id="__codelineno-0-169" name="__codelineno-0-169"></a>        <span class="n">bias</span> <span class="o">=</span> <span class="n">bias</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<a id="__codelineno-0-170" name="__codelineno-0-170"></a>
+<a id="__codelineno-0-171" name="__codelineno-0-171"></a>    <span class="k">def</span> <span class="nf">_instance_norm</span><span class="p">(</span>
+<a id="__codelineno-0-172" name="__codelineno-0-172"></a>        <span class="n">x</span><span class="p">,</span>
+<a id="__codelineno-0-173" name="__codelineno-0-173"></a>        <span class="n">num_groups</span><span class="p">,</span>
+<a id="__codelineno-0-174" name="__codelineno-0-174"></a>        <span class="n">running_mean</span><span class="p">,</span>
+<a id="__codelineno-0-175" name="__codelineno-0-175"></a>        <span class="n">running_cov</span><span class="p">,</span>
+<a id="__codelineno-0-176" name="__codelineno-0-176"></a>        <span class="n">weight</span><span class="p">,</span>
+<a id="__codelineno-0-177" name="__codelineno-0-177"></a>        <span class="n">bias</span><span class="p">,</span>
+<a id="__codelineno-0-178" name="__codelineno-0-178"></a>        <span class="n">training</span><span class="p">,</span>
+<a id="__codelineno-0-179" name="__codelineno-0-179"></a>        <span class="n">momentum</span><span class="p">,</span>
+<a id="__codelineno-0-180" name="__codelineno-0-180"></a>        <span class="n">eps</span><span class="p">,</span>
+<a id="__codelineno-0-181" name="__codelineno-0-181"></a>    <span class="p">):</span>
+<a id="__codelineno-0-182" name="__codelineno-0-182"></a>        <span class="k">if</span> <span class="n">running_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-183" name="__codelineno-0-183"></a>            <span class="k">assert</span> <span class="n">running_mean</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span>
+<a id="__codelineno-0-184" name="__codelineno-0-184"></a>            <span class="n">running_mean_orig</span> <span class="o">=</span> <span class="n">running_mean</span>
+<a id="__codelineno-0-185" name="__codelineno-0-185"></a>            <span class="n">running_mean</span> <span class="o">=</span> <span class="n">running_mean_orig</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<a id="__codelineno-0-186" name="__codelineno-0-186"></a>            <span class="k">assert</span> <span class="n">running_cov</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span>
+<a id="__codelineno-0-187" name="__codelineno-0-187"></a>            <span class="n">running_cov_orig</span> <span class="o">=</span> <span class="n">running_cov</span>
+<a id="__codelineno-0-188" name="__codelineno-0-188"></a>            <span class="n">running_cov</span> <span class="o">=</span> <span class="n">running_cov_orig</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<a id="__codelineno-0-189" name="__codelineno-0-189"></a>
+<a id="__codelineno-0-190" name="__codelineno-0-190"></a>        <span class="c1"># Reshape such that batch normalization can be applied.</span>
+<a id="__codelineno-0-191" name="__codelineno-0-191"></a>        <span class="c1"># For num_groups == 1, it defaults to layer normalization,</span>
+<a id="__codelineno-0-192" name="__codelineno-0-192"></a>        <span class="c1"># for num_groups == C, it defaults to instance normalization.</span>
+<a id="__codelineno-0-193" name="__codelineno-0-193"></a>        <span class="n">x_reshaped</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">B</span> <span class="o">*</span> <span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">),</span> <span class="n">num_groups</span><span class="p">,</span> <span class="o">*</span><span class="n">D</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+<a id="__codelineno-0-194" name="__codelineno-0-194"></a>
+<a id="__codelineno-0-195" name="__codelineno-0-195"></a>        <span class="n">x_norm</span> <span class="o">=</span> <span class="n">clifford_batch_norm</span><span class="p">(</span>
+<a id="__codelineno-0-196" name="__codelineno-0-196"></a>            <span class="n">x_reshaped</span><span class="p">,</span>
+<a id="__codelineno-0-197" name="__codelineno-0-197"></a>            <span class="n">n_blades</span><span class="p">,</span>
+<a id="__codelineno-0-198" name="__codelineno-0-198"></a>            <span class="n">running_mean</span><span class="p">,</span>
+<a id="__codelineno-0-199" name="__codelineno-0-199"></a>            <span class="n">running_cov</span><span class="p">,</span>
+<a id="__codelineno-0-200" name="__codelineno-0-200"></a>            <span class="n">weight</span><span class="p">,</span>
+<a id="__codelineno-0-201" name="__codelineno-0-201"></a>            <span class="n">bias</span><span class="p">,</span>
+<a id="__codelineno-0-202" name="__codelineno-0-202"></a>            <span class="n">training</span><span class="p">,</span>
+<a id="__codelineno-0-203" name="__codelineno-0-203"></a>            <span class="n">momentum</span><span class="p">,</span>
+<a id="__codelineno-0-204" name="__codelineno-0-204"></a>            <span class="n">eps</span><span class="p">,</span>
+<a id="__codelineno-0-205" name="__codelineno-0-205"></a>        <span class="p">)</span>
+<a id="__codelineno-0-206" name="__codelineno-0-206"></a>
+<a id="__codelineno-0-207" name="__codelineno-0-207"></a>        <span class="c1"># Reshape back running mean and running var.</span>
+<a id="__codelineno-0-208" name="__codelineno-0-208"></a>        <span class="k">if</span> <span class="n">running_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-209" name="__codelineno-0-209"></a>            <span class="n">running_mean_orig</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">running_mean</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<a id="__codelineno-0-210" name="__codelineno-0-210"></a>        <span class="k">if</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-211" name="__codelineno-0-211"></a>            <span class="n">running_cov_orig</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">running_cov</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<a id="__codelineno-0-212" name="__codelineno-0-212"></a>
+<a id="__codelineno-0-213" name="__codelineno-0-213"></a>        <span class="k">return</span> <span class="n">x_norm</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">D</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
+<a id="__codelineno-0-214" name="__codelineno-0-214"></a>
+<a id="__codelineno-0-215" name="__codelineno-0-215"></a>    <span class="k">return</span> <span class="n">_instance_norm</span><span class="p">(</span>
+<a id="__codelineno-0-216" name="__codelineno-0-216"></a>        <span class="n">x</span><span class="p">,</span>
+<a id="__codelineno-0-217" name="__codelineno-0-217"></a>        <span class="n">num_groups</span><span class="p">,</span>
+<a id="__codelineno-0-218" name="__codelineno-0-218"></a>        <span class="n">running_mean</span><span class="p">,</span>
+<a id="__codelineno-0-219" name="__codelineno-0-219"></a>        <span class="n">running_cov</span><span class="p">,</span>
+<a id="__codelineno-0-220" name="__codelineno-0-220"></a>        <span class="n">weight</span><span class="p">,</span>
+<a id="__codelineno-0-221" name="__codelineno-0-221"></a>        <span class="n">bias</span><span class="p">,</span>
+<a id="__codelineno-0-222" name="__codelineno-0-222"></a>        <span class="n">training</span><span class="p">,</span>
+<a id="__codelineno-0-223" name="__codelineno-0-223"></a>        <span class="n">momentum</span><span class="p">,</span>
+<a id="__codelineno-0-224" name="__codelineno-0-224"></a>        <span class="n">eps</span><span class="p">,</span>
+<a id="__codelineno-0-225" name="__codelineno-0-225"></a>    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="cliffordlayers.nn.functional.groupnorm.complex_group_norm" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">complex_group_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">num_groups</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">running_mean</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">running_cov</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">)</span></code>
+
+<a href="#cliffordlayers.nn.functional.groupnorm.complex_group_norm" class="headerlink" title="Permanent link">¤</a></h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Group normalization for complex-valued tensors.</p>
+
+
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The input complex-valued data is expected to be at least 2d, with
+              shape <code>(B, C, *D)</code>, where <code>B</code> is the batch dimension, <code>C</code> the
+              channels/features, and *D the remaining dimensions (if present).</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>num_groups</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Number of groups for which normalization is calculated. Defaults to 1.
+              For <code>num_groups == 1</code>, it effectively applies complex-valued layer normalization;
+              for <code>num_groups == C</code>, it effectively applies complex-valued instance normalization.</p>
+            </div>
+          </td>
+          <td>
+                <code>1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_mean</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tensor with running mean statistics having shape <code>(2, C / num_groups)</code>. Defaults to None.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>running_cov</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The tensor with running real-imaginary covariance statistics having shape <code>(2, 2, C / num_groups)</code>. Defaults to None.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>weight</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a>, <span title="torch.Parameter">Parameter</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Additional weight tensor which is applied post normalization, and has the shape <code>(2, 2, C/ num_groups)</code>. Defaults to None.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>bias</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a>, <span title="torch.Parameter">Parameter</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Additional bias tensor which is applied post normalization, and has the shape <code>(2, C / num_groups)</code>. Defaults to None.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>training</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to use the running mean and variance. Defaults to True.</p>
+            </div>
+          </td>
+          <td>
+                <code>True</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>momentum</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Momentum for the running mean and variance. Defaults to 0.1.</p>
+            </div>
+          </td>
+          <td>
+                <code>0.1</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>eps</code></td>
+          <td>
+                <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Epsilon for the running mean and variance. Defaults to 1e-05.</p>
+            </div>
+          </td>
+          <td>
+                <code>1e-05</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code><a class="autorefs autorefs-external" title="torch.Tensor" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor">Tensor</a></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Normalized input as complex tensor of shape <code>(B, C, *D)</code>.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>cliffordlayers/nn/functional/groupnorm.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-0-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-0-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-0-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-0-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-0-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-0-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-0-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-0-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-0-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-0-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-0-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-0-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-0-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-0-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-0-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-0-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-0-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-0-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-0-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-0-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-0-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-0-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-0-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-0-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-0-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-0-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-0-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-0-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-0-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-0-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-0-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-0-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-0-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-0-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-0-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-0-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-0-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-0-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-0-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-0-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-0-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-0-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-0-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-0-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-0-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-0-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-0-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-0-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-0-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-0-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-0-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-0-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-0-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-0-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-0-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-0-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-0-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-0-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-0-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-0-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-0-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-0-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-0-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-0-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-0-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-0-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-0-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-0-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-0-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-0-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-0-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span>
+<span class="normal"><a href="#__codelineno-0-101">101</a></span>
+<span class="normal"><a href="#__codelineno-0-102">102</a></span>
+<span class="normal"><a href="#__codelineno-0-103">103</a></span>
+<span class="normal"><a href="#__codelineno-0-104">104</a></span>
+<span class="normal"><a href="#__codelineno-0-105">105</a></span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span>
+<span class="normal"><a href="#__codelineno-0-108">108</a></span>
+<span class="normal"><a href="#__codelineno-0-109">109</a></span>
+<span class="normal"><a href="#__codelineno-0-110">110</a></span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span>
+<span class="normal"><a href="#__codelineno-0-112">112</a></span>
+<span class="normal"><a href="#__codelineno-0-113">113</a></span>
+<span class="normal"><a href="#__codelineno-0-114">114</a></span>
+<span class="normal"><a href="#__codelineno-0-115">115</a></span>
+<span class="normal"><a href="#__codelineno-0-116">116</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="k">def</span> <span class="nf">complex_group_norm</span><span class="p">(</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="n">num_groups</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="n">running_mean</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="n">running_cov</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="n">weight</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>    <span class="n">bias</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>    <span class="n">training</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>    <span class="n">momentum</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>    <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-05</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="p">):</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Group normalization for complex-valued tensors.</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">    Args:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">        x (torch.Tensor): The input complex-valued data is expected to be at least 2d, with</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">                          shape `(B, C, *D)`, where `B` is the batch dimension, `C` the</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">                          channels/features, and *D the remaining dimensions (if present).</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">        num_groups (int): Number of groups for which normalization is calculated. Defaults to 1.</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">                          For `num_groups == 1`, it effectively applies complex-valued layer normalization;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">                          for `num_groups == C`, it effectively applies complex-valued instance normalization.</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="sd">        running_mean (torch.Tensor, optional): The tensor with running mean statistics having shape `(2, C / num_groups)`. Defaults to None.</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">        running_cov (torch.Tensor, optional): The tensor with running real-imaginary covariance statistics having shape `(2, 2, C / num_groups)`. Defaults to None.</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">        weight (Union[torch.Tensor, nn.Parameter], optional): Additional weight tensor which is applied post normalization, and has the shape `(2, 2, C/ num_groups)`. Defaults to None.</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">        bias (Union[torch.Tensor, nn.Parameter], optional): Additional bias tensor which is applied post normalization, and has the shape `(2, C / num_groups)`. Defaults to None.</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">        training (bool, optional): Whether to use the running mean and variance. Defaults to True.</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="sd">        momentum (float, optional): Momentum for the running mean and variance. Defaults to 0.1.</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">        eps (float, optional): Epsilon for the running mean and variance. Defaults to 1e-05.</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">        (torch.Tensor): Normalized input as complex tensor of shape `(B, C, *D)`.</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>    <span class="c1"># Check arguments.</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a>    <span class="k">assert</span> <span class="p">(</span><span class="n">running_mean</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">running_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a>    <span class="k">assert</span> <span class="p">(</span><span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a>    <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">D</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a>    <span class="k">assert</span> <span class="n">C</span> <span class="o">%</span> <span class="n">num_groups</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Number of channels should be evenly divisible by the number of groups.&quot;</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="k">assert</span> <span class="n">num_groups</span> <span class="o">&lt;=</span> <span class="n">C</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a>    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">bias</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a>        <span class="c1"># Check if weight and bias tensors are of correct shape.</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a>        <span class="k">assert</span> <span class="n">weight</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a>        <span class="k">assert</span> <span class="n">bias</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>        <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>        <span class="n">bias</span> <span class="o">=</span> <span class="n">bias</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>    <span class="k">def</span> <span class="nf">_instance_norm</span><span class="p">(</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>        <span class="n">x</span><span class="p">,</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>        <span class="n">num_groups</span><span class="p">,</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="n">running_mean</span><span class="p">,</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="n">running_cov</span><span class="p">,</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="n">weight</span><span class="p">,</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>        <span class="n">bias</span><span class="p">,</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70"></a>        <span class="n">training</span><span class="p">,</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71"></a>        <span class="n">momentum</span><span class="p">,</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72"></a>        <span class="n">eps</span><span class="p">,</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73"></a>    <span class="p">):</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a>        <span class="k">if</span> <span class="n">running_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75"></a>            <span class="k">assert</span> <span class="n">running_mean</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76"></a>            <span class="n">running_mean_orig</span> <span class="o">=</span> <span class="n">running_mean</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77"></a>            <span class="n">running_mean</span> <span class="o">=</span> <span class="n">running_mean_orig</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78"></a>            <span class="k">assert</span> <span class="n">running_cov</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79"></a>            <span class="n">running_cov_orig</span> <span class="o">=</span> <span class="n">running_cov</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80"></a>            <span class="n">running_cov</span> <span class="o">=</span> <span class="n">running_cov_orig</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a>
+<a id="__codelineno-0-82" name="__codelineno-0-82"></a>        <span class="c1"># Reshape such that batch normalization can be applied.</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83"></a>        <span class="c1"># For num_groups == 1, it defaults to layer normalization,</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a>        <span class="c1"># for num_groups == C, it defaults to instance normalization.</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>        <span class="n">x_reshaped</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">B</span> <span class="o">*</span> <span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">),</span> <span class="n">num_groups</span><span class="p">,</span> <span class="o">*</span><span class="n">D</span><span class="p">)</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a>        <span class="n">x_norm</span> <span class="o">=</span> <span class="n">complex_batch_norm</span><span class="p">(</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a>            <span class="n">x_reshaped</span><span class="p">,</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a>            <span class="n">running_mean</span><span class="p">,</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>            <span class="n">running_cov</span><span class="p">,</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>            <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92"></a>            <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93"></a>            <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">,</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a>            <span class="n">momentum</span><span class="o">=</span><span class="n">momentum</span><span class="p">,</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95"></a>            <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96"></a>        <span class="p">)</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>        <span class="c1"># Reshape back running mean and running var.</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>        <span class="k">if</span> <span class="n">running_mean</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>            <span class="n">running_mean_orig</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">running_mean</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101"></a>        <span class="k">if</span> <span class="n">running_cov</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a>            <span class="n">running_cov_orig</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">running_cov</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">num_groups</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>        <span class="k">return</span> <span class="n">x_norm</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="o">*</span><span class="n">D</span><span class="p">)</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105"></a>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a>    <span class="k">return</span> <span class="n">_instance_norm</span><span class="p">(</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a>        <span class="n">x</span><span class="p">,</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a>        <span class="n">num_groups</span><span class="p">,</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a>        <span class="n">running_mean</span><span class="p">,</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>        <span class="n">running_cov</span><span class="p">,</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a>        <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a>        <span class="n">bias</span><span class="o">=</span><span class="n">bias</span><span class="p">,</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a>        <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">,</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114"></a>        <span class="n">momentum</span><span class="o">=</span><span class="n">momentum</span><span class="p">,</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a>        <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a>    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
